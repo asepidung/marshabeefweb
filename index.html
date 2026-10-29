@@ -66,6 +66,12 @@
       padding: 0;
     }
 
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
     html {
       scroll-behavior: smooth;
       color-scheme: light;
@@ -77,7 +83,7 @@
       background-color: var(--cream-bg);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      position: relative;
     }
 
     a {
@@ -1440,6 +1446,10 @@
     }
 
     .form-control {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: var(--radius-md);
@@ -1449,6 +1459,30 @@
       font-size: 0.95rem;
       outline: none;
       transition: all 0.2s ease;
+    }
+
+    select.form-control {
+      max-width: 100%;
+      text-overflow: ellipsis;
+    }
+
+    /* Prevent CSS Grid items from expanding viewport */
+    .hero-grid > *,
+    .anatomy-grid > *,
+    .products-grid > *,
+    .label-showcase-grid > *,
+    .coldchain-grid > *,
+    .legal-grid > *,
+    .segments-grid > *,
+    .order-form-grid > *,
+    .party-box > *,
+    .doneness-display-grid > *,
+    .thawing-steps-grid > *,
+    .testimonials-grid > *,
+    .contact-card > *,
+    .footer-grid > * {
+      min-width: 0;
+      max-width: 100%;
     }
 
     .form-control:focus {
@@ -1772,6 +1806,578 @@
     }
 
     /* ==========================================================================
+       BACK TO TOP BUTTON
+       ========================================================================== */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 990;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      box-shadow: 0 4px 16px rgba(41, 23, 15, 0.12);
+      color: var(--ink-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .back-to-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       LIVE STORE STATUS BADGE
+       ========================================================================== */
+    .store-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+    .store-status-pill.open .status-indicator {
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+    }
+    .store-status-pill.closed .status-indicator {
+      background: #facc15;
+      box-shadow: 0 0 8px #facc15;
+    }
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulseIndicator 2s infinite ease-in-out;
+    }
+    @keyframes pulseIndicator {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ==========================================================================
+       PETA ANATOMI SAPI (BEEF CUT ANATOMY)
+       ========================================================================== */
+    .section-anatomy {
+      padding: 90px 0;
+      background: radial-gradient(circle at 20% 50%, #fffcf8 0%, #faf5ec 100%);
+      border-top: 1px solid var(--cream-border);
+      border-bottom: 1px solid var(--cream-border);
+    }
+    .anatomy-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .anatomy-diagram-card {
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      position: relative;
+    }
+    .beef-cuts-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .cut-tab-btn {
+      background: var(--cream-surface);
+      border: 1px solid var(--cream-border);
+      color: var(--ink-700);
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .cut-tab-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .cut-tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(159, 18, 57, 0.25);
+    }
+    .anatomy-info-card {
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--card-shadow);
+    }
+    .cut-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .cut-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ink-900);
+      letter-spacing: -0.01em;
+    }
+    .cut-sub {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cut-desc {
+      font-size: 0.94rem;
+      color: var(--ink-700);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .cut-meters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .meter-box {
+      background: var(--cream-surface);
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+    }
+    .meter-label {
+      font-size: 0.74rem;
+      color: var(--ink-500);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .meter-val {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--ink-900);
+    }
+
+    /* ==========================================================================
+       STEAK DONENESS MASTER
+       ========================================================================== */
+    .section-doneness {
+      padding: 90px 0;
+      background: #ffffff;
+      border-top: 1px solid var(--cream-border);
+      border-bottom: 1px solid var(--cream-border);
+    }
+    .doneness-container-box {
+      background: radial-gradient(circle at 50% 30%, #fffbf5 0%, #faf3e8 100%);
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .doneness-selector-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .doneness-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      color: var(--ink-700);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .doneness-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .doneness-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(159, 18, 57, 0.3);
+    }
+    .doneness-display-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .steak-visual-box {
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-lg);
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(41, 23, 15, 0.06);
+    }
+    .steak-cut-preview {
+      width: 100%;
+      height: 110px;
+      border-radius: 18px;
+      margin: 16px 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.4), 0 8px 18px rgba(0,0,0,0.12);
+      border: 3px solid #3c1e08;
+      transition: background 0.4s ease;
+    }
+    .steak-crust-top, .steak-crust-bottom {
+      height: 8px;
+      background: #2b1104;
+      width: 100%;
+    }
+    .steak-core {
+      height: 94px;
+      width: 100%;
+      transition: all 0.4s ease;
+    }
+    .doneness-specs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .doneness-spec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+    }
+    .doneness-spec-row span:first-child {
+      color: var(--ink-500);
+      font-weight: 600;
+    }
+    .doneness-spec-row span:last-child {
+      font-weight: 800;
+      color: var(--ink-900);
+    }
+
+    /* ==========================================================================
+       BARCODE DECODER TOOL (TRACEABILITY TESTER)
+       ========================================================================== */
+    .barcode-decoder-wrapper {
+      margin-top: 40px;
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+      width: 100%;
+    }
+    .decoder-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .decoder-input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .decoder-input {
+      flex: 1;
+      min-width: 240px;
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: 2px solid var(--cream-border);
+      border-radius: var(--radius-md);
+      background: var(--cream-surface);
+      color: var(--ink-900);
+      outline: none;
+      letter-spacing: 1.5px;
+    }
+    .decoder-input:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+    .decoder-results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      background: var(--cream-surface);
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .decoder-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .decoder-item-label {
+      font-size: 0.72rem;
+      color: var(--ink-500);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .decoder-item-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink-900);
+    }
+
+    /* ==========================================================================
+       PARTY & BBQ PLANNER (KALKULATOR PORSI)
+       ========================================================================== */
+    .section-partyplanner {
+      padding: 90px 0;
+      background: var(--cream-bg);
+      border-top: 1px solid var(--cream-border);
+      border-bottom: 1px solid var(--cream-border);
+    }
+    .party-box {
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .party-form-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .slider-val-badge {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+    .party-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #e7dfd3;
+      outline: none;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .party-result-card {
+      background: radial-gradient(circle at 10% 20%, #fffbf5 0%, #faf3e8 100%);
+      border: 2px solid var(--cream-border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      text-align: center;
+    }
+    .result-kg-big {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: var(--ink-900);
+      line-height: 1;
+      margin: 8px 0;
+      letter-spacing: -0.02em;
+    }
+    .result-kg-unit {
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .result-breakdown-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 18px 0 24px;
+      text-align: left;
+    }
+    .res-pill-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-sm);
+    }
+
+    /* ==========================================================================
+       PANDUAN THAWING & PENYIMPANAN HIGIENIS
+       ========================================================================== */
+    .section-thawing {
+      padding: 90px 0;
+      background: #ffffff;
+    }
+    .thawing-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+    .thawing-step-card {
+      background: var(--cream-surface);
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      position: relative;
+    }
+    .step-number-tag {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--ink-900);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.05em;
+    }
+    .step-icon {
+      font-size: 2.2rem;
+      margin: 8px 0 14px;
+    }
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink-900);
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--ink-700);
+      line-height: 1.55;
+    }
+    .thawing-warning-box {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #991b1b;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       TESTIMONIALS & SOCIAL PROOF
+       ========================================================================== */
+    .section-testimonials {
+      padding: 90px 0;
+      background: var(--cream-bg);
+      border-top: 1px solid var(--cream-border);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .testi-card {
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+    }
+    .testi-stars {
+      color: #f59e0b;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    .testi-quote {
+      font-size: 0.92rem;
+      color: var(--ink-700);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid var(--cream-border-subtle);
+      padding-top: 14px;
+    }
+    .testi-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .testi-author-info h5 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--ink-900);
+      line-height: 1.2;
+    }
+    .testi-author-info p {
+      font-size: 0.74rem;
+      color: var(--ink-500);
+    }
+
+    /* ==========================================================================
        FLOATING WHATSAPP BUTTON
        ========================================================================== */
     .floating-wa-btn {
@@ -1824,7 +2430,7 @@
     }
 
     /* ==========================================================================
-       RESPONSIVE BREAKPOINTS
+       RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
        ========================================================================== */
     @media (max-width: 960px) {
       .hero-grid,
@@ -1832,13 +2438,17 @@
       .coldchain-grid,
       .legal-grid,
       .contact-card,
-      .footer-grid {
+      .footer-grid,
+      .anatomy-grid,
+      .doneness-display-grid,
+      .party-box,
+      .thawing-steps-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 30px;
       }
 
       .hero {
-        padding: 40px 0 60px;
+        padding: 40px 0 50px;
       }
 
       .hero-media {
@@ -1846,7 +2456,8 @@
       }
 
       .hero-media-wrapper {
-        max-width: 320px;
+        max-width: 280px;
+        margin: 0 auto;
       }
 
       .order-form-grid {
@@ -1859,6 +2470,23 @@
     }
 
     @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.95rem;
+      }
+
+      /* Navbar Drawer */
       .nav-menu {
         display: none;
         position: absolute;
@@ -1866,15 +2494,24 @@
         left: 0;
         right: 0;
         background: #ffffff;
-        border-bottom: 1px solid var(--cream-border);
+        border-bottom: 2px solid var(--cream-border);
         flex-direction: column;
-        padding: 20px;
-        gap: 16px;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        padding: 16px 20px 24px;
+        gap: 12px;
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
       }
 
       .nav-menu.active {
         display: flex;
+      }
+
+      .nav-link {
+        font-size: 1rem;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--cream-border-subtle);
+        width: 100%;
       }
 
       .nav-toggle {
@@ -1882,32 +2519,300 @@
       }
 
       .topbar {
+        font-size: 0.76rem;
+      }
+
+      .topbar .container {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .topbar-items {
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .topbar-contact {
         display: none;
+      }
+
+      /* Hero Mobile */
+      .hero-title {
+        font-size: clamp(1.75rem, 5.5vw, 2.3rem);
+      }
+
+      .hero-desc {
+        font-size: 0.98rem;
+        margin-bottom: 20px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
       }
 
       .hero-trust-bar {
         grid-template-columns: 1fr;
+        gap: 8px;
       }
 
       .hero-card-left,
       .hero-card-right {
         position: static;
-        margin-top: 10px;
+        margin: 8px auto 0;
+        max-width: 280px;
+        width: 100%;
       }
 
-      .order-box {
-        padding: 24px 20px;
+      /* Anatomy Mobile */
+      .section-anatomy,
+      .section-doneness,
+      .section-partyplanner,
+      .section-thawing,
+      .section-testimonials,
+      .section-products,
+      .section-label,
+      .section-coldchain,
+      .section-legal,
+      .section-segments,
+      .section-order,
+      .section-faq,
+      .section-contact {
+        padding: 50px 0;
       }
 
+      .anatomy-diagram-card,
+      .anatomy-info-card,
+      .doneness-container-box,
+      .party-box,
+      .party-result-card,
+      .legal-card,
+      .contact-card,
+      .order-box,
+      .barcode-decoder-wrapper {
+        padding: 22px 16px;
+        border-radius: var(--radius-lg);
+      }
+
+      .cut-meters-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Doneness Mobile */
+      .doneness-selector-row {
+        gap: 6px;
+      }
+
+      .doneness-btn {
+        padding: 7px 12px;
+        font-size: 0.78rem;
+      }
+
+      .doneness-spec-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+        padding: 8px 12px;
+      }
+
+      /* Party Planner Mobile (Fixed Overflow!) */
+      .res-pill-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 8px 10px;
+      }
+
+      .res-pill-row span {
+        font-size: 0.76rem;
+      }
+
+      .res-pill-row b {
+        font-size: 0.85rem;
+        word-break: break-word;
+      }
+
+      .result-kg-big {
+        font-size: 2.5rem;
+      }
+
+      /* Label 100x75 mm Mobile Scaler */
+      .label-wrapper-container {
+        padding: 16px 10px;
+      }
+
+      .printed-label {
+        padding: 8px 10px;
+        border-width: 2px;
+      }
+
+      .lbl-product-title {
+        font-size: clamp(12px, 3.8vw, 15px);
+        padding: 2px 6px;
+      }
+
+      .lbl-weight-val {
+        font-size: clamp(24px, 7vw, 32px);
+      }
+
+      .lbl-barcode-text {
+        font-size: clamp(8.5px, 2.7vw, 11px);
+        letter-spacing: 1px;
+      }
+
+      .lbl-company {
+        font-size: clamp(9px, 2.8vw, 11px);
+      }
+
+      .lbl-address {
+        font-size: 6.5px;
+      }
+
+      .lbl-type-bar {
+        font-size: 9.5px;
+        padding: 2px;
+      }
+
+      .lbl-dates {
+        font-size: 8.5px;
+      }
+
+      .lbl-date-lbl {
+        width: 38px;
+      }
+
+      .lbl-nkv {
+        font-size: 7.5px;
+      }
+
+      /* Decoder Tool Mobile */
+      .decoder-input-row {
+        flex-direction: column;
+      }
+
+      .decoder-input {
+        min-width: 0;
+        width: 100%;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+      }
+
+      .decoder-input-row .btn {
+        width: 100%;
+      }
+
+      .decoder-results-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 12px;
+      }
+
+      /* Thawing Mobile */
+      .thawing-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .thawing-warning-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 0.82rem;
+      }
+
+      /* Testimonials Mobile */
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .testi-card {
+        padding: 20px 16px;
+      }
+
+      /* Products Mobile */
+      .filter-tabs {
+        gap: 6px;
+        margin-bottom: 24px;
+      }
+
+      .filter-btn {
+        padding: 7px 14px;
+        font-size: 0.78rem;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .product-card {
+        padding: 20px 16px;
+      }
+
+      /* Floating Actions Mobile */
       .floating-wa-status {
         display: none;
       }
 
       .floating-wa-btn {
-        padding: 14px;
+        padding: 13px;
         border-radius: 50%;
-        bottom: 20px;
-        right: 20px;
+        bottom: 18px;
+        right: 18px;
+      }
+
+      .back-to-top-btn {
+        bottom: 18px;
+        left: 18px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-actions .btn-whatsapp {
+        display: none;
+      }
+
+      .brand-title {
+        font-size: 1.05rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.65rem;
+      }
+
+      .brand-logo img {
+        height: 36px;
+      }
+
+      .topbar {
+        display: none;
+      }
+
+      .decoder-results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-detail-row {
+        gap: 10px;
+      }
+
+      .contact-icon-box {
+        width: 32px;
+        height: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
       }
     }
   </style>
@@ -1921,6 +2826,12 @@
     <div class="container">
       <div class="topbar-items">
         <span class="topbar-item">
+          <span class="store-status-pill open" id="storeStatusBadge">
+            <span class="status-indicator"></span>
+            <span id="storeStatusText">Toko Buka &bull; 07.00 - 17.00 WIB</span>
+          </span>
+        </span>
+        <span class="topbar-item">
           <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
           100% Halal Indonesia Resmi
         </span>
@@ -1929,7 +2840,7 @@
           Unit Ber-NKV: <b>RPH-3276041-016</b>
         </span>
         <span class="topbar-item">
-          ❄️ Cold Chain Terpantau: <b>Chill 0&deg;C &middot; Frozen -18&deg;C</b>
+          ❄️ Cold Chain: <b>Chill 0&deg;C &middot; Frozen -18&deg;C</b>
         </span>
       </div>
       <a href="https://wa.me/6285891955438?text=Halo%20CMM%20Meat%2C%20saya%20mau%20tanya%20produk%20daging." target="_blank" rel="noopener" class="topbar-contact wa-direct-btn">
@@ -1953,11 +2864,14 @@
         </a>
 
         <ul class="nav-menu" id="navMenu">
-          <li><a href="#produk" class="nav-link">Katalog Daging</a></li>
+          <li><a href="#anatomi" class="nav-link">Peta Potongan</a></li>
+          <li><a href="#produk" class="nav-link">Katalog</a></li>
+          <li><a href="#doneness" class="nav-link">Doneness Steak</a></li>
           <li><a href="#label" class="nav-link">Standar Label</a></li>
-          <li><a href="#suhu" class="nav-link">Suhu &amp; Rantai Dingin</a></li>
-          <li><a href="#legalitas" class="nav-link">Produsen &amp; NKV</a></li>
-          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#party" class="nav-link">Hitung Porsi</a></li>
+          <li><a href="#suhu" class="nav-link">Cold Chain</a></li>
+          <li><a href="#thawing" class="nav-link">Tips Thawing</a></li>
+          <li><a href="#testimoni" class="nav-link">Ulasan</a></li>
           <li><a href="#kontak" class="nav-link">Kontak</a></li>
         </ul>
 
@@ -2095,6 +3009,110 @@
           <p class="pillar-desc">
             Diproduksi di unit usaha pemotongan resmi ber-NKV RPH-3276041-016 serta jaminan sertifikasi Halal Indonesia.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 1.5: PETA ANATOMI SAPI (BEEF CUT ANATOMY MAP)
+       ========================================================================== -->
+  <section class="section-anatomy" id="anatomi">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-amber">Edukasi Kuliner</div>
+        <h2 class="section-title">Peta Anatomi Bagian Daging Sapi</h2>
+        <p class="section-subtitle">
+          Pahami karakter tiap potongan daging agar masakan Anda menghasilkan tekstur, aroma, dan keempukan maksimal.
+        </p>
+      </div>
+
+      <div class="anatomy-grid">
+        <div class="anatomy-diagram-card">
+          <!-- Stylized Beef Anatomy Graphic -->
+          <svg viewBox="0 0 520 300" style="width: 100%; height: auto; max-width: 440px; margin: 0 auto; display: block;" id="beefSvgMap">
+            <defs>
+              <linearGradient id="cowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff8f2" />
+                <stop offset="100%" stop-color="#faebd7" />
+              </linearGradient>
+            </defs>
+            <!-- Cow Silhouette Background Outline -->
+            <path d="M70,110 C85,75 110,65 140,75 C165,80 185,70 230,70 C290,68 335,70 380,85 C420,95 440,110 445,140 C450,175 435,210 420,230 L410,265 L385,265 L390,225 L340,225 L340,265 L315,265 L320,220 L220,220 L210,265 L185,265 L190,215 L140,215 L135,265 L110,265 L115,200 C85,195 65,160 55,140 C45,120 50,115 70,110 Z" fill="url(#cowGrad)" stroke="#8a3a0c" stroke-width="2.5" />
+            
+            <!-- Cuts regions -->
+            <!-- Chuck / Neck -->
+            <path id="part-chuck" class="cut-zone" d="M105,100 C125,85 145,85 165,95 L160,185 C135,185 105,170 95,145 Z" fill="#fed7aa" stroke="#c2410c" stroke-width="1.8" style="cursor: pointer; transition: all 0.25s;" />
+            <text x="110" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#9a3412">CHUCK</text>
+            
+            <!-- Rib -->
+            <path id="part-rib" class="cut-zone" d="M165,95 L235,92 L230,175 L160,185 Z" fill="#ffedd5" stroke="#c2410c" stroke-width="1.8" style="cursor: pointer; transition: all 0.25s;" />
+            <text x="185" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#9a3412">RIB</text>
+            
+            <!-- Loin / Tenderloin -->
+            <path id="part-loin" class="cut-zone" d="M235,92 L300,90 L295,145 L230,148 Z" fill="#fecdd3" stroke="#be123c" stroke-width="2.2" style="cursor: pointer; transition: all 0.25s;" />
+            <text x="240" y="123" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#9f1239">TENDERLOIN</text>
+            
+            <!-- Sirloin / Striploin -->
+            <path id="part-sirloin" class="cut-zone" d="M300,90 L365,98 L360,165 L295,160 Z" fill="#fee2e2" stroke="#be123c" stroke-width="2.2" style="cursor: pointer; transition: all 0.25s;" />
+            <text x="304" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#9f1239">STRIPLOIN</text>
+            
+            <!-- Round / Hindquarter -->
+            <path id="part-round" class="cut-zone" d="M365,98 C400,108 425,125 425,160 C420,190 395,215 360,215 L360,165 Z" fill="#fed7aa" stroke="#c2410c" stroke-width="1.8" style="cursor: pointer; transition: all 0.25s;" />
+            <text x="375" y="160" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#9a3412">ROUND</text>
+
+            <!-- Brisket & Shank (Front) -->
+            <path id="part-brisket" class="cut-zone" d="M125,185 L180,185 L175,220 L130,220 Z" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" />
+            <text x="135" y="205" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#b45309">BRISKET</text>
+
+            <!-- Flank & Plate -->
+            <path id="part-flank" class="cut-zone" d="M230,148 L295,145 L290,215 L225,215 Z" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" />
+            <text x="245" y="185" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#b45309">FLANK</text>
+          </svg>
+
+          <p style="font-size: 0.8rem; color: var(--ink-500); margin-top: 14px;">
+            💡 Klik tombol di bawah untuk melihat detail potongan:
+          </p>
+
+          <div class="beef-cuts-nav">
+            <button class="cut-tab-btn active" data-cut="tenderloin">Tenderloin (Has Dalam)</button>
+            <button class="cut-tab-btn" data-cut="striploin">Striploin (Has Luar)</button>
+            <button class="cut-tab-btn" data-cut="creastmeat">Creastmeat (Olahan)</button>
+            <button class="cut-tab-btn" data-cut="rib">Ribeye / Iga</button>
+          </div>
+        </div>
+
+        <div class="anatomy-info-card" id="anatomyInfoBox">
+          <div class="cut-title-row">
+            <h3 class="cut-title" id="cutName">Tenderloin (Has Dalam)</h3>
+            <span class="cut-sub" id="cutSub">Primary Loin Cut &middot; Kode 1001</span>
+          </div>
+          <p class="cut-desc" id="cutDesc">
+            Potongan memanjang di bagian punggung dalam sapi. Karena otot ini jarang bekerja keras, seratnya sangat halus dan merupakan potongan terempuk di seluruh karkas sapi.
+          </p>
+
+          <div class="cut-meters-grid">
+            <div class="meter-box">
+              <div class="meter-label">Tingkat Keempukan</div>
+              <div class="meter-val" id="cutTenderness">⭐⭐⭐⭐⭐ (Sangat Empuk)</div>
+            </div>
+            <div class="meter-box">
+              <div class="meter-label">Kadar Lemak (Marbling)</div>
+              <div class="meter-val" id="cutMarbling">Rendah (Lean &amp; Sehat)</div>
+            </div>
+            <div class="meter-box">
+              <div class="meter-label">Suhu Masak Optimal</div>
+              <div class="meter-val" id="cutDoneness">Medium Rare (55&deg;C)</div>
+            </div>
+            <div class="meter-box">
+              <div class="meter-label">Metode Masak Terbaik</div>
+              <div class="meter-val" id="cutCooking">Pan-seared Steak, Roast, Shabu</div>
+            </div>
+          </div>
+
+          <a href="#produk" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 0.9rem;" id="cutProductLink">
+            Lihat Produk Tenderloin di Katalog &rarr;
+          </a>
         </div>
       </div>
     </div>
@@ -2257,6 +3275,69 @@
   </section>
 
   <!-- ==========================================================================
+       SECTION 2.5: PANDUAN TINGKAT KEMATANGAN STEAK (STEAK DONENESS MASTER)
+       ========================================================================== -->
+  <section class="section-doneness" id="doneness">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Tips &amp; Teknik Masak</div>
+        <h2 class="section-title">Panduan Tingkat Kematangan Steak</h2>
+        <p class="section-subtitle">
+          Ketahui suhu interior, waktu memanggang per sisi, dan karakter rasa dari setiap tingkatan doneness daging sapi pilihan Anda.
+        </p>
+      </div>
+
+      <div class="doneness-container-box">
+        <div class="doneness-selector-row">
+          <button class="doneness-btn" data-doneness="rare">Rare (50&deg;C)</button>
+          <button class="doneness-btn active" data-doneness="medrare">Medium Rare (55&deg;C) ★</button>
+          <button class="doneness-btn" data-doneness="medium">Medium (60&deg;C)</button>
+          <button class="doneness-btn" data-doneness="medwell">Medium Well (65&deg;C)</button>
+          <button class="doneness-btn" data-doneness="welldone">Well Done (71&deg;C+)</button>
+        </div>
+
+        <div class="doneness-display-grid">
+          <div class="steak-visual-box">
+            <span class="badge badge-amber" id="donenessBadge">Rekomendasi Chef untuk Striploin &amp; Tenderloin</span>
+            <div class="steak-cut-preview">
+              <div class="steak-crust-top"></div>
+              <div class="steak-core" id="steakCoreVisual" style="background: radial-gradient(ellipse at 50% 50%, #dc2626 0%, #b91c1c 45%, #7f1d1d 85%);"></div>
+              <div class="steak-crust-bottom"></div>
+            </div>
+            <h4 style="font-size: 1.35rem; font-weight: 800; color: var(--ink-900);" id="donenessTitle">MEDIUM RARE</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-700); margin-top: 6px;" id="donenessOverview">
+              Pusat daging bersuhu hangat dan berwarna merah cerah, dengan pinggiran cokelat beraroma panggangan. Sangat berair (juicy) dan empuk.
+            </p>
+          </div>
+
+          <div class="doneness-specs-list">
+            <div class="doneness-spec-row">
+              <span>Suhu Internal Daging:</span>
+              <span id="donenessTemp">55&deg;C &ndash; 57&deg;C (130&deg;F &ndash; 135&deg;F)</span>
+            </div>
+            <div class="doneness-spec-row">
+              <span>Waktu Masak (Tebal 2.5 cm):</span>
+              <span id="donenessTime">3 &ndash; 4 Menit Tiap Sisi (Pan/Grill Panas)</span>
+            </div>
+            <div class="doneness-spec-row">
+              <span>Waktu Rest (Istirahat):</span>
+              <span id="donenessRest">5 Menit (Agar sari daging merata)</span>
+            </div>
+            <div class="doneness-spec-row">
+              <span>Karakteristik Tekstur:</span>
+              <span id="donenessFeel">Kenyal lembut (seperti pangkal ibu jari)</span>
+            </div>
+            <div class="doneness-spec-row">
+              <span>Potongan Paling Cocok:</span>
+              <span id="donenessBestCut">Striploin, Tenderloin, Steak Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        SECTION 3: LIVE INTERACTIVE LABEL SIMULATION (100x75 mm)
        ========================================================================== -->
   <section class="section-label" id="label">
@@ -2385,6 +3466,114 @@
           </div>
         </div>
       </div>
+
+      <!-- Traceability Barcode Decoder Tool -->
+      <div class="barcode-decoder-wrapper">
+        <div class="decoder-header">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--ink-900);">🔍 Cek Informasi Batch Label (Traceability Tool)</h3>
+            <p style="font-size: 0.88rem; color: var(--ink-500); margin-top: 4px;">Ketik atau pilih contoh nomor barcode 23-digit dari kemasan daging Anda untuk melihat rincian batch pabrik:</p>
+          </div>
+          <span class="badge badge-primary">Sistem Digital Terpadu</span>
+        </div>
+
+        <div class="decoder-input-row">
+          <input type="text" id="decoderInput" class="decoder-input" value="12610051002102515060008" maxlength="23" placeholder="Masukkan 23 digit barcode..." oninput="decodeBarcodeLive()">
+          <button type="button" class="btn btn-outline" style="padding: 10px 18px; font-size: 0.85rem;" onclick="loadRandomBarcodeSample()">Muat Sampel Lain</button>
+        </div>
+
+        <div class="decoder-results-grid">
+          <div class="decoder-item">
+            <span class="decoder-item-label">Tanggal Produksi</span>
+            <span class="decoder-item-val" id="decDate">05 Oktober 2026</span>
+          </div>
+          <div class="decoder-item">
+            <span class="decoder-item-label">Nama Produk</span>
+            <span class="decoder-item-val" id="decProduct">STRIPLOIN (1002)</span>
+          </div>
+          <div class="decoder-item">
+            <span class="decoder-item-label">Kondisi Suhu</span>
+            <span class="decoder-item-val" id="decType">CHILL (0&deg;C)</span>
+          </div>
+          <div class="decoder-item">
+            <span class="decoder-item-label">Berat Bersih</span>
+            <span class="decoder-item-val" id="decWeight">25.15 Kg</span>
+          </div>
+          <div class="decoder-item">
+            <span class="decoder-item-label">Jumlah Isi</span>
+            <span class="decoder-item-val" id="decPcs">6 PCS</span>
+          </div>
+          <div class="decoder-item">
+            <span class="decoder-item-label">Nomor Urut Kemas</span>
+            <span class="decoder-item-val" id="decCounter">Label ke-0008</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3.5: KALKULATOR PORSI & BBQ PARTY PLANNER
+       ========================================================================== -->
+  <section class="section-partyplanner" id="party">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-amber">Kalkulator Kebutuhan</div>
+        <h2 class="section-title">Party &amp; BBQ Meat Planner</h2>
+        <p class="section-subtitle">
+          Bingung mau beli daging berapa kilogram untuk acara Anda? Geser slider di bawah, kami hitungkan porsi optimal agar tidak kurang dan tidak berlebih.
+        </p>
+      </div>
+
+      <div class="party-box">
+        <div class="party-form-wrap">
+          <div>
+            <div class="slider-row">
+              <span style="font-weight: 700; color: var(--ink-900);">Jumlah Orang / Tamu:</span>
+              <span class="slider-val-badge" id="partyGuestCountDisplay">10 Orang</span>
+            </div>
+            <input type="range" id="partyGuestSlider" class="party-slider" min="2" max="60" value="10" step="1" oninput="calculatePartyMeat()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="partyOccasion" style="color: var(--ink-700);">Tipe Acara / Rencana Masak</label>
+            <select id="partyOccasion" class="form-control" style="background: #ffffff; color: var(--ink-900); border-color: var(--cream-border); width: 100%; max-width: 100%;" onchange="calculatePartyMeat()">
+              <option value="bbq" selected>BBQ Steak Party (350g/org)</option>
+              <option value="dinner">Family Dinner Steak (250g/org)</option>
+              <option value="stew">Masakan Rendang / Semur (200g/org)</option>
+            </select>
+          </div>
+
+          <div style="font-size: 0.86rem; color: var(--ink-500); line-height: 1.5;">
+            💡 <b>Tips Ahli Butcher:</b> Sudah memperhitungkan susut panggangan alami (~15%) sehingga setiap tamu dijamin menikmati porsi daging yang kenyang dan memuaskan.
+          </div>
+        </div>
+
+        <div class="party-result-card">
+          <span class="badge badge-primary">Rekomendasi Pembelian</span>
+          <div class="result-kg-big" id="partyTotalKg">3.5 <span class="result-kg-unit">Kg</span></div>
+          <div style="font-size: 0.88rem; font-weight: 700; color: var(--ink-700);">Estimasi Kebutuhan Total Daging</div>
+
+          <div class="result-breakdown-pills">
+            <div class="res-pill-row">
+              <span style="color: var(--ink-500);">Saran Potongan Utama:</span>
+              <b id="partySuggestedCut" style="color: var(--primary-dark);">Striploin &amp; Steak Ready</b>
+            </div>
+            <div class="res-pill-row">
+              <span style="color: var(--ink-500);">Perkiraan Jumlah Steak:</span>
+              <b id="partySteakPortions" style="color: var(--ink-900);">14 &ndash; 16 Pcs Potongan</b>
+            </div>
+            <div class="res-pill-row">
+              <span style="color: var(--ink-500);">Kondisi Disarankan:</span>
+              <b style="color: #0369a1;">Chill (Siap Masak Tanpa Thawing)</b>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-whatsapp" style="width: 100%; padding: 13px;" onclick="orderPartyPackage()">
+            Pesan Paket Daging Ini di WhatsApp &rarr;
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2448,6 +3637,57 @@
               Pilihan ideal untuk cadangan bahan baku resto &amp; rumah tangga
             </li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4.5: PANDUAN THAWING & PENYIMPANAN HIGIENIS
+       ========================================================================== -->
+  <section class="section-thawing" id="thawing">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-amber">Higienitas &amp; Keamanan Pangan</div>
+        <h2 class="section-title">Panduan Thawing (Mencairkan) Daging Beku</h2>
+        <p class="section-subtitle">
+          Hindari kesalahan umum yang membuat daging kehilangan sari alaminya atau terkontaminasi bakteri. Ikuti 3 metode aman ini:
+        </p>
+      </div>
+
+      <div class="thawing-steps-grid">
+        <div class="thawing-step-card">
+          <span class="step-number-tag">METODE 1 (TERBAIK)</span>
+          <div class="step-icon">🧊</div>
+          <h4 class="step-title">Thawing di Kulkas Bawah (Chiller)</h4>
+          <p class="step-desc">
+            Pindahkan daging beku dari freezer ke rak kulkas bawah (chiller suhu 0&deg;C &ndash; 4&deg;C) sekitar 12&ndash;24 jam sebelum dimasak. Serat daging mencair perlahan tanpa merusak kelembapan sari alaminya.
+          </p>
+        </div>
+
+        <div class="thawing-step-card">
+          <span class="step-number-tag">METODE 2 (CEPAT)</span>
+          <div class="step-icon">💧</div>
+          <h4 class="step-title">Air Dingin Mengalir</h4>
+          <p class="step-desc">
+            Jika butuh cepat, rendam kemasan vakum daging yang masih rapat ke dalam baskom berisi air dingin mengalir (jangan air hangat). Biasanya daging cair merata dalam waktu 30 &ndash; 60 menit.
+          </p>
+        </div>
+
+        <div class="thawing-step-card">
+          <span class="step-number-tag">METODE 3 (LANGSUNG)</span>
+          <div class="step-icon">🍳</div>
+          <h4 class="step-title">Masak Langsung (Steak Ready)</h4>
+          <p class="step-desc">
+            Untuk potongan tertentu seperti Striploin Steak Ready dengan ketebalan standar, Anda bisa memanggangnya dengan teknik *reverse sear* pada api kecil-sedang langsung dari kondisi setengah beku.
+          </p>
+        </div>
+      </div>
+
+      <div class="thawing-warning-box">
+        <span style="font-size: 1.5rem;">⚠️</span>
+        <div>
+          <b>Pantangan Penting:</b> Jangan pernah mencairkan daging beku dengan merendamnya di air panas atau mendiamkannya di suhu ruangan terbuka berjam-jam, karena memicu lonjakan bakteri dan membuat daging berair serta alot saat dimasak.
         </div>
       </div>
     </div>
@@ -2546,6 +3786,79 @@
           <p class="segment-desc">
             Harga kemitraan bersaing dengan kemasan berlabel resmi yang siap langsung dipajang di freezer etalase Anda.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6.5: TESTIMONI PELANGGAN & MITRA KULINER
+       ========================================================================== -->
+  <section class="section-testimonials" id="testimoni">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge badge-primary">Kepercayaan Nyata</div>
+        <h2 class="section-title">Apa Kata Mitra &amp; Pelanggan Kami?</h2>
+        <p class="section-subtitle">
+          Dari chef restoran hingga keluarga pencinta steak rumahan, ini pengalaman mereka menggunakan daging sapi CMM Meat.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">
+            "Striploin dari CMM Meat punya fat cap yang sangat wangi saat kena grill panas. Potongannya rapi, label gramaturnya presisi sampai 2 desimal jadi mempermudah kalkulasi food cost restoran kami."
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">CH</div>
+            <div class="testi-author-info">
+              <h5>Chef Hendra</h5>
+              <p>Head Chef &amp; Owner Resto Grill, Depok</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">
+            "Paling tenang kalau pesan di sini karena ada sertifikat Halal resmi dan izin NKV RPH. Klien katering kami sangat mementingkan aspek kehalalan dan kebersihan bahan baku."
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">IR</div>
+            <div class="testi-author-info">
+              <h5>Ibu Ratna W.</h5>
+              <p>Owner 'Dapur Berkah' Katering &amp; Bento</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">
+            "Tenderloinnya beneran empuk banget, dimasak Medium Rare cukup 3 menit per sisi di teflon rumah udah kayak makan di restoran bintang lima. Anak-anak langsung suka!"
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">DP</div>
+            <div class="testi-author-info">
+              <h5>Dimas Pratama</h5>
+              <p>Pelanggan Retail &amp; Home Cook, Cimanggis</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">
+            "Creastmeat-nya juara kalau buat rendang padang atau semur. Kuah kaldu dagingnya keluar gurih pekat dan serat dagingnya empuk meresap bumbu tanpa hancur."
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">BS</div>
+            <div class="testi-author-info">
+              <h5>Bpk. Suryo</h5>
+              <p>Pengusaha Rumah Makan &amp; Reseller</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2813,17 +4126,25 @@
   </a>
 
   <!-- ==========================================================================
+       BACK TO TOP BUTTON
+       ========================================================================== -->
+  <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Kembali ke atas">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
+
+  <!-- ==========================================================================
        JAVASCRIPT: CODE128 RENDERER, INTERACTIVITY & WA BUILDER
        ========================================================================== -->
   <script>
     // ==========================================
-    // 1. PENGATURAN NOMOR WHATSAPP (GANTI DI SINI)
+    // 1. PENGATURAN NOMOR WHATSAPP
     // ==========================================
-    // Format: 628xxxxxxxxxx (tanpa tanda + atau spasi)
     const WA_NUMBER = "6285891955438";
     const WA_DISPLAY = "+62 858-9195-5438";
 
-    // Update semua link WhatsApp secara dinamis
+    // Inisialisasi utama saat DOM siap
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("currentYear").textContent = new Date().getFullYear();
       const displayElem = document.getElementById("contactWaDisplay");
@@ -2836,9 +4157,13 @@
         }
       });
 
-      // Inisialisasi awal
+      // Jalankan seluruh modul interaktif
       updateOrderPreview();
       renderLiveBarcode("12610051002102515060008");
+      decodeBarcodeLive();
+      calculatePartyMeat();
+      checkStoreStatus();
+      initBackToTop();
     });
 
     // ==========================================
@@ -2874,7 +4199,6 @@
 
       const barPattern = codes.map(c => CODE128_PATTERNS[c]).join("");
 
-      // Render vector SVG rects
       let x = 0;
       let rects = "";
       for (let i = 0; i < barPattern.length; i++) {
@@ -2949,11 +4273,317 @@
         document.getElementById("lblExpired").textContent = data.expired;
         document.getElementById("lblTypeBar").innerHTML = `<span>${data.typeText}</span>`;
         renderLiveBarcode(data.barcode);
+
+        // Update decoder input juga jika diinginkan
+        const decInput = document.getElementById("decoderInput");
+        if (decInput) {
+          decInput.value = data.barcode;
+          decodeBarcodeLive();
+        }
       });
     });
 
     // ==========================================
-    // 4. FILTER KATALOG PRODUK
+    // 4. TRACEABILITY BARCODE DECODER TOOL
+    // ==========================================
+    const SAMPLE_BARCODES = [
+      "12610051002102515060008",
+      "12610051001101250050001",
+      "12610051003201000200003",
+      "12610051004201580040004"
+    ];
+    let sampleIndex = 0;
+
+    function loadRandomBarcodeSample() {
+      sampleIndex = (sampleIndex + 1) % SAMPLE_BARCODES.length;
+      const code = SAMPLE_BARCODES[sampleIndex];
+      document.getElementById("decoderInput").value = code;
+      decodeBarcodeLive();
+    }
+
+    function decodeBarcodeLive() {
+      const raw = (document.getElementById("decoderInput")?.value || "").trim();
+      if (raw.length !== 23) {
+        document.getElementById("decDate").textContent = "...";
+        document.getElementById("decProduct").textContent = "Barcode harus 23 digit";
+        document.getElementById("decType").textContent = "...";
+        document.getElementById("decWeight").textContent = "...";
+        document.getElementById("decPcs").textContent = "...";
+        document.getElementById("decCounter").textContent = "...";
+        return;
+      }
+
+      const y = "20" + raw.substring(1, 3);
+      const m = raw.substring(3, 5);
+      const d = raw.substring(5, 7);
+      const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+      const monthName = months[parseInt(m, 10) - 1] || m;
+      document.getElementById("decDate").textContent = `${d} ${monthName} ${y}`;
+
+      const prodCode = raw.substring(7, 11);
+      const productNames = {
+        "1001": "TENDERLOIN (Has Dalam)",
+        "1002": "STRIPLOIN (Has Luar)",
+        "1003": "STRIPLOIN STEAK READY",
+        "1004": "CREASTMEAT (Daging Olahan)"
+      };
+      document.getElementById("decProduct").textContent = `${productNames[prodCode] || "Produk Khusus"} (${prodCode})`;
+
+      const typeCode = raw.substring(11, 12);
+      document.getElementById("decType").textContent = typeCode === "1" ? "CHILL (0°C)" : "FROZEN (-18°C)";
+
+      const weightRaw = parseInt(raw.substring(12, 17), 10);
+      const weightKg = (weightRaw / 100).toFixed(2);
+      document.getElementById("decWeight").textContent = `${weightKg} Kg`;
+
+      const pcs = parseInt(raw.substring(17, 19), 10);
+      document.getElementById("decPcs").textContent = pcs > 0 ? `${pcs} PCS` : "Kemasan Curah";
+
+      const counter = parseInt(raw.substring(19, 23), 10);
+      document.getElementById("decCounter").textContent = `Label ke-${counter.toString().padStart(4, "0")}`;
+    }
+
+    // ==========================================
+    // 5. PETA ANATOMI SAPI (BEEF CUT ANATOMY)
+    // ==========================================
+    const BEEF_CUTS_DATA = {
+      tenderloin: {
+        name: "Tenderloin (Has Dalam)",
+        sub: "Primary Loin Cut \u00B7 Kode 1001",
+        desc: "Potongan memanjang di bagian punggung dalam sapi. Karena otot ini jarang bekerja keras, seratnya sangat halus dan merupakan potongan terempuk di seluruh karkas sapi.",
+        tenderness: "⭐⭐⭐⭐⭐ (Sangat Empuk)",
+        marbling: "Rendah (Lean & Sehat)",
+        doneness: "Medium Rare (55°C)",
+        cooking: "Pan-seared Steak, Roast, Shabu",
+        productText: "Lihat Produk Tenderloin di Katalog →"
+      },
+      striploin: {
+        name: "Striploin (Has Luar)",
+        sub: "Sirloin Loin Cut \u00B7 Kode 1002",
+        desc: "Potongan has luar yang berada di sepanjang punggung atas sapi dengan lapisan lemak gurih (fat cap) di satu sisinya. Menghasilkan rasa steak gurih khas dengan aroma kuat.",
+        tenderness: "⭐⭐⭐⭐½ (Empuk & Berlemak)",
+        marbling: "Sedang - Tinggi (Juicy)",
+        doneness: "Medium Rare (55°C)",
+        cooking: "Grilled Sirloin Steak, New York Strip, BBQ",
+        productText: "Lihat Produk Striploin di Katalog →"
+      },
+      creastmeat: {
+        name: "Creastmeat (Potongan Olahan)",
+        sub: "Rich Flavor Cut \u00B7 Kode 1004",
+        desc: "Potongan daging sapi pilihan dengan tekstur serat yang kenyal padat dan kaya gelatin kaldu alami. Sangat tahan dimasak lama (slow-cook) hingga bumbu meresap sempurna.",
+        tenderness: "⭐⭐⭐⭐ (Empuk saat Slow Cook)",
+        marbling: "Sedang (Kaya Sari Kaldu)",
+        doneness: "Well Done (Slow Cook)",
+        cooking: "Rendang, Semur, Empal, Rawon, Sup",
+        productText: "Lihat Produk Creastmeat di Katalog →"
+      },
+      rib: {
+        name: "Ribeye & Iga (Rib Cut)",
+        sub: "Prime Rib Area",
+        desc: "Potongan daging iga yang kaya marbling intramuscular. Lemak meleleh sempurna saat dipanggang, menciptakan kelezatan gurih yang lembut dan berair.",
+        tenderness: "⭐⭐⭐⭐⭐ (Sangat Juicy)",
+        marbling: "Tinggi (Marbled)",
+        doneness: "Medium Rare - Medium",
+        cooking: "Tomahawk, Ribeye Steak, Iga Bakar",
+        productText: "Konsultasi Ketersediaan Iga via WA →"
+      }
+    };
+
+    document.querySelectorAll(".cut-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".cut-tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const cutKey = btn.dataset.cut;
+        const data = BEEF_CUTS_DATA[cutKey];
+        if (!data) return;
+
+        document.getElementById("cutName").textContent = data.name;
+        document.getElementById("cutSub").textContent = data.sub;
+        document.getElementById("cutDesc").textContent = data.desc;
+        document.getElementById("cutTenderness").textContent = data.tenderness;
+        document.getElementById("cutMarbling").textContent = data.marbling;
+        document.getElementById("cutDoneness").textContent = data.doneness;
+        document.getElementById("cutCooking").textContent = data.cooking;
+        document.getElementById("cutProductLink").textContent = data.productText;
+      });
+    });
+
+    // ==========================================
+    // 6. STEAK DONENESS GUIDE
+    // ==========================================
+    const DONENESS_DATA = {
+      rare: {
+        title: "RARE (50°C)",
+        badge: "Ekstra Lembut & Merah Alami",
+        bg: "radial-gradient(ellipse at 50% 50%, #ef4444 0%, #dc2626 50%, #991b1b 90%)",
+        overview: "Inti daging merah cerah dan bersuhu agak sejuk-hangat. Sangat berair (juicy) dan empuk maksimal.",
+        temp: "50°C – 52°C (120°F – 125°F)",
+        time: "2 – 2.5 Menit Tiap Sisi (Pan Sangat Panas)",
+        rest: "5 Menit",
+        feel: "Sangat lembut & empuk kenyal",
+        bestCut: "Tenderloin, Filet Mignon"
+      },
+      medrare: {
+        title: "MEDIUM RARE (55°C) ★",
+        badge: "Rekomendasi Chef untuk Striploin & Tenderloin",
+        bg: "radial-gradient(ellipse at 50% 50%, #dc2626 0%, #b91c1c 45%, #7f1d1d 85%)",
+        overview: "Pusat daging bersuhu hangat dan berwarna merah cerah, dengan pinggiran cokelat beraroma panggangan. Sangat berair dan empuk.",
+        temp: "55°C – 57°C (130°F – 135°F)",
+        time: "3 – 4 Menit Tiap Sisi (Pan/Grill Panas)",
+        rest: "5 Menit (Agar sari daging merata)",
+        feel: "Kenyal lembut (seperti pangkal ibu jari)",
+        bestCut: "Striploin, Tenderloin, Steak Ready"
+      },
+      medium: {
+        title: "MEDIUM (60°C)",
+        badge: "Pilihan Seimbang & Populer",
+        bg: "radial-gradient(ellipse at 50% 50%, #f87171 0%, #e11d48 40%, #881337 80%)",
+        overview: "Pusat daging berwarna merah muda (pink) hangat. Keseimbangan ideal antara keempukan dan panggangan matang.",
+        temp: "60°C – 63°C (140°F – 145°F)",
+        time: "4 – 5 Menit Tiap Sisi",
+        rest: "5 Menit",
+        feel: "Mulai agak membal dan elastis",
+        bestCut: "Striploin, Ribeye, Sirloin"
+      },
+      medwell: {
+        title: "MEDIUM WELL (65°C)",
+        badge: "Sedikit Pink di Tengah",
+        bg: "radial-gradient(ellipse at 50% 50%, #fb7185 0%, #9f1239 30%, #4c0519 75%)",
+        overview: "Hanya menyisakan sedikit semburat warna merah muda tipis di bagian tengah. Daging matang dengan tekstur kokoh.",
+        temp: "65°C – 68°C (150°F – 155°F)",
+        time: "5 – 6 Menit Tiap Sisi",
+        rest: "4 Menit",
+        feel: "Padat dan kenyal",
+        bestCut: "Striploin Steak Ready"
+      },
+      welldone: {
+        title: "WELL DONE (71°C+)",
+        badge: "Matang Menyeluruh Sempurna",
+        bg: "radial-gradient(ellipse at 50% 50%, #78350f 0%, #451a03 50%, #291003 90%)",
+        overview: "Matang merata dari luar hingga ke dalam inti daging tanpa warna merah. Tekstur padat dan kesat.",
+        temp: "71°C+ (160°F+)",
+        time: "6 – 7 Menit Tiap Sisi (Api Sedang)",
+        rest: "3 Menit",
+        feel: "Padat dan padu",
+        bestCut: "Creastmeat, Daging Olahan"
+      }
+    };
+
+    document.querySelectorAll(".doneness-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".doneness-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const lvl = btn.dataset.doneness;
+        const data = DONENESS_DATA[lvl];
+        if (!data) return;
+
+        document.getElementById("donenessTitle").textContent = data.title;
+        document.getElementById("donenessBadge").textContent = data.badge;
+        document.getElementById("donenessOverview").textContent = data.overview;
+        document.getElementById("donenessTemp").textContent = data.temp;
+        document.getElementById("donenessTime").textContent = data.time;
+        document.getElementById("donenessRest").textContent = data.rest;
+        document.getElementById("donenessFeel").textContent = data.feel;
+        document.getElementById("donenessBestCut").textContent = data.bestCut;
+        document.getElementById("steakCoreVisual").style.background = data.bg;
+      });
+    });
+
+    // ==========================================
+    // 7. PARTY & BBQ PLANNER (HITUNG PORSI)
+    // ==========================================
+    function calculatePartyMeat() {
+      const slider = document.getElementById("partyGuestSlider");
+      if (!slider) return;
+
+      const guests = parseInt(slider.value, 10) || 10;
+      const occasion = document.getElementById("partyOccasion").value;
+      document.getElementById("partyGuestCountDisplay").textContent = `${guests} Orang`;
+
+      let mult = 0.35;
+      let cutName = "Striploin & Steak Ready";
+      let estSteaks = `${Math.round(guests * 1.5)} Pcs Potongan`;
+
+      if (occasion === "dinner") {
+        mult = 0.25;
+        cutName = "Tenderloin & Striploin Pilihan";
+        estSteaks = `${guests} Pcs Steak Premium`;
+      } else if (occasion === "stew") {
+        mult = 0.20;
+        cutName = "Creastmeat (Olahan Rendang/Semur)";
+        estSteaks = `Porsi Masakan untuk ${guests} Orang`;
+      }
+
+      const totalKg = (guests * mult).toFixed(1);
+      document.getElementById("partyTotalKg").innerHTML = `${totalKg} <span class="result-kg-unit">Kg</span>`;
+      document.getElementById("partySuggestedCut").textContent = cutName;
+      document.getElementById("partySteakPortions").textContent = estSteaks;
+    }
+
+    function orderPartyPackage() {
+      const guests = document.getElementById("partyGuestSlider").value;
+      const occasionText = document.getElementById("partyOccasion").selectedOptions[0].text;
+      const totalKg = document.getElementById("partyTotalKg").textContent.trim();
+      const cut = document.getElementById("partySuggestedCut").textContent;
+
+      const msg = `Halo CMM Meat,\nSaya ingin memesan Paket Acara Daging:\n\n` +
+        `👥 Jumlah Tamu: ${guests} Orang\n` +
+        `🎉 Tipe Acara: ${occasionText}\n` +
+        `⚖️ Estimasi Kebutuhan: ${totalKg}\n` +
+        `🥩 Saran Potongan: ${cut}\n\n` +
+        `Mohon info ketersediaan stok, harga paket, dan rekomendasi pengiriman. Terima kasih!`;
+
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+    }
+
+    // ==========================================
+    // 8. STATUS OPERASIONAL TOKO REAL-TIME (WIB)
+    // ==========================================
+    function checkStoreStatus() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const wib = new Date(utc + (3600000 * 7));
+      const day = wib.getDay(); // 0: Minggu
+      const hour = wib.getHours();
+
+      const badge = document.getElementById("storeStatusBadge");
+      const text = document.getElementById("storeStatusText");
+      if (!badge || !text) return;
+
+      const isOpen = (day >= 1 && day <= 6 && hour >= 7 && hour < 17);
+      if (isOpen) {
+        badge.className = "store-status-pill open";
+        text.textContent = "Toko Buka • 07.00 - 17.00 WIB";
+      } else {
+        badge.className = "store-status-pill closed";
+        text.textContent = "Chat Aktif • Pesan Siap Diproses Esok";
+      }
+    }
+
+    // ==========================================
+    // 9. BACK TO TOP BUTTON
+    // ==========================================
+    function initBackToTop() {
+      const btt = document.getElementById("backToTopBtn");
+      if (!btt) return;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 350) {
+          btt.classList.add("show");
+        } else {
+          btt.classList.remove("show");
+        }
+      });
+
+      btt.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    // ==========================================
+    // 10. FILTER KATALOG PRODUK
     // ==========================================
     document.querySelectorAll(".filter-btn").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -2979,7 +4609,7 @@
     });
 
     // ==========================================
-    // 5. KALKULATOR PESANAN WHATSAPP OTOMATIS
+    // 11. KALKULATOR PESANAN WHATSAPP OTOMATIS
     // ==========================================
     function getOrderText() {
       const prod = document.getElementById("orderProduct").value;
@@ -3014,14 +4644,13 @@
     }
 
     // ==========================================
-    // 6. FAQ ACCORDION TOGGLE
+    // 12. FAQ ACCORDION TOGGLE
     // ==========================================
     document.querySelectorAll(".faq-question").forEach(q => {
       q.addEventListener("click", () => {
         const item = q.parentElement;
         const isOpen = item.classList.contains("open");
 
-        // Tutup yang lain
         document.querySelectorAll(".faq-item").forEach(other => {
           other.classList.remove("open");
         });
@@ -3033,7 +4662,7 @@
     });
 
     // ==========================================
-    // 7. MOBILE NAVIGATION TOGGLE
+    // 13. MOBILE NAVIGATION TOGGLE
     // ==========================================
     const navToggle = document.getElementById("navToggle");
     const navMenu = document.getElementById("navMenu");
@@ -3043,7 +4672,6 @@
         navMenu.classList.toggle("active");
       });
 
-      // Tutup menu saat link diklik
       navMenu.querySelectorAll(".nav-link").forEach(link => {
         link.addEventListener("click", () => {
           navMenu.classList.remove("active");
