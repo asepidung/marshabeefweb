@@ -85,5 +85,5 @@ cmm-meat/
 
 ---
 
-Crafted With Coffee By [idnx](https://saepullrock.tech)  
+Crafted With ☕ By [idnx](https://saepullrock.tech)  
 &copy; PT. Berkah Marsha Sejahtera – Seluruh hak cipta dilindungi.
