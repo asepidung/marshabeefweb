@@ -303,6 +303,7 @@
       align-items: center;
       justify-content: space-between;
       height: 72px;
+      gap: 20px;
     }
 
     .brand-logo {
@@ -310,17 +311,21 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .brand-logo img {
       height: 44px;
       width: auto;
       object-fit: contain;
+      flex-shrink: 0;
     }
 
     .brand-text {
       display: flex;
       flex-direction: column;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .brand-title {
@@ -329,6 +334,7 @@
       color: var(--primary-dark);
       letter-spacing: -0.01em;
       line-height: 1.1;
+      white-space: nowrap;
     }
 
     .brand-subtitle {
@@ -337,22 +343,32 @@
       color: var(--ink-500);
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
     }
 
     .nav-link {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--ink-700);
       transition: color 0.15s ease;
       padding: 6px 0;
       position: relative;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .mobile-only-link {
+      display: none;
     }
 
     .nav-link:hover {
@@ -379,6 +395,12 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .nav-actions .btn {
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-toggle {
@@ -2078,12 +2100,32 @@
         padding: 40px 0 50px;
       }
 
+      .hero-content {
+        max-width: 100%;
+      }
+
       .hero-media {
-        order: -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        margin-top: 24px;
+        margin-bottom: 12px;
       }
 
       .hero-media-wrapper {
-        max-width: 280px;
+        max-width: 240px;
+        aspect-ratio: 1/1;
+        margin: 0 auto;
+      }
+
+      .hero-floating-card {
+        position: static !important;
+        width: 100%;
+        max-width: 340px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        padding: 10px 14px;
         margin: 0 auto;
       }
 
@@ -2096,24 +2138,12 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 16px;
+    /* Responsive Navbar Drawer (triggers up to 1024px tablet/small laptop) */
+    @media (max-width: 1024px) {
+      .nav-actions .btn-whatsapp {
+        display: none;
       }
 
-      .section-header {
-        margin-bottom: 32px;
-      }
-
-      .section-title {
-        font-size: 1.7rem;
-      }
-
-      .section-subtitle {
-        font-size: 0.95rem;
-      }
-
-      /* Navbar Drawer */
       .nav-menu {
         display: none;
         position: absolute;
@@ -2124,7 +2154,7 @@
         border-bottom: 2px solid var(--cream-border);
         flex-direction: column;
         padding: 16px 20px 24px;
-        gap: 12px;
+        gap: 6px;
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
         max-height: calc(100vh - 80px);
         overflow-y: auto;
@@ -2136,31 +2166,33 @@
 
       .nav-link {
         font-size: 1rem;
-        padding: 8px 0;
+        padding: 10px 0;
         border-bottom: 1px solid var(--cream-border-subtle);
+        width: 100%;
+        display: block;
+      }
+
+      .mobile-only-link {
+        display: block;
         width: 100%;
       }
 
       .nav-toggle {
         display: block;
       }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
 
       .topbar {
-        font-size: 0.76rem;
-      }
-
-      .topbar .container {
-        justify-content: center;
-        text-align: center;
-      }
-
-      .topbar-items {
-        justify-content: center;
-        gap: 8px;
-      }
-
-      .topbar-contact {
         display: none;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
       }
 
       /* Hero Mobile */
@@ -2414,13 +2446,13 @@
         </a>
 
         <ul class="nav-menu" id="navMenu">
-          <li><a href="#anatomi" class="nav-link">Peta Potongan</a></li>
           <li><a href="#produk" class="nav-link">Katalog</a></li>
+          <li><a href="#anatomi" class="nav-link">Peta Potongan</a></li>
           <li><a href="#doneness" class="nav-link">Doneness Steak</a></li>
           <li><a href="#party" class="nav-link">Hitung Porsi</a></li>
-          <li><a href="#suhu" class="nav-link">Cold Chain</a></li>
-          <li><a href="#thawing" class="nav-link">Tips Thawing</a></li>
-          <li><a href="#testimoni" class="nav-link">Ulasan</a></li>
+          <li class="mobile-only-link"><a href="#suhu" class="nav-link">Cold Chain (Suhu Simpan)</a></li>
+          <li class="mobile-only-link"><a href="#thawing" class="nav-link">Tips Thawing Daging</a></li>
+          <li class="mobile-only-link"><a href="#testimoni" class="nav-link">Ulasan Mitra &amp; Pembeli</a></li>
           <li><a href="#kontak" class="nav-link">Kontak</a></li>
         </ul>
 
@@ -2476,7 +2508,7 @@
               <div class="trust-pill-icon">🕌</div>
               <div>
                 <div class="trust-pill-title">100% Halal Indonesia</div>
-                <div class="trust-pill-sub">Sertifikasi Resmi Resmi Kemenag</div>
+                <div class="trust-pill-sub">Sertifikasi Resmi BPJPH &amp; Kemenag</div>
               </div>
             </div>
             <div class="trust-pill">
@@ -2578,175 +2610,30 @@
 
       <div class="anatomy-grid">
         <div class="anatomy-diagram-card">
-          <!-- Stylized Beef Anatomy Graphic (Authentic Cow Silhouette) -->
-          <svg viewBox="0 0 540 320" style="width: 100%; height: auto; max-width: 480px; margin: 0 auto; display: block;" id="beefSvgMap">
-            <defs>
-              <linearGradient id="cowBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fffbf7" />
-                <stop offset="100%" stop-color="#faebd7" />
-              </linearGradient>
-              <filter id="cowShadow" x="-5%" y="-5%" width="110%" height="110%">
-                <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.08" />
-              </filter>
-            </defs>
+          <div style="margin-bottom: 14px;">
+            <span class="badge badge-primary" style="font-size: 0.72rem; padding: 4px 10px;">STANDAR BUTCHER INDONESIA</span>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--ink-900); margin-top: 6px;">Bagian Daging Sapi &amp; Istilahnya</h3>
+          </div>
 
-            <!-- COW SILHOUETTE BASE -->
-            <g filter="url(#cowShadow)">
-              <!-- Main Cow Body Silhouette -->
-              <path d="
-                M 85,82
-                C 75,55 52,38 35,42
-                C 42,52 56,66 70,78
-                C 58,95 44,115 36,132
-                C 33,138 34,146 42,148
-                C 50,150 62,148 70,140
-                C 76,155 86,178 122,192
-                L 126,225
-                L 124,275
-                L 146,275
-                L 150,228
-                L 168,228
-                L 171,275
-                L 192,275
-                L 190,220
-                C 225,225 268,225 315,220
-                L 338,220
-                L 340,275
-                L 362,275
-                L 364,220
-                C 382,215 398,205 408,220
-                L 410,275
-                L 432,275
-                L 434,215
-                C 455,195 465,165 460,130
-                C 455,95 425,78 385,74
-                C 335,72 290,72 245,70
-                C 200,68 175,60 148,60
-                C 125,60 110,70 98,82
-                Z
-              " fill="url(#cowBodyGrad)" stroke="#78350f" stroke-width="2.5" stroke-linejoin="round" />
+          <!-- Authentic Indonesian Butcher Beef Map Image -->
+          <div class="beef-diagram-container" style="position: relative; width: 100%; max-width: 520px; margin: 0 auto; display: flex; align-items: center; justify-content: center; padding: 12px 0;">
+            <img src="beef_diagram.png" alt="Peta Bagian Daging Sapi CMM Meat" id="beefDiagramImg" style="width: 100%; height: auto; max-width: 480px; display: block; filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.08));">
+          </div>
 
-              <!-- Cow Horns (Tanduk Sapi Khas) -->
-              <path d="M 76,75 C 65,48 46,32 30,36 C 40,48 55,65 68,76 Z" fill="#b45309" stroke="#78350f" stroke-width="1.8" />
-              <path d="M 92,72 C 86,48 72,32 60,34 C 68,46 80,62 86,74 Z" fill="#92400e" stroke="#78350f" stroke-width="1.5" />
-
-              <!-- Cow Ear (Telinga Sapi) -->
-              <path d="M 88,88 C 105,86 118,92 114,102 C 105,104 94,98 86,92 Z" fill="#fbcfe8" stroke="#78350f" stroke-width="1.5" />
-
-              <!-- Cow Eye & Nostril details -->
-              <ellipse cx="60" cy="102" rx="3" ry="4" fill="#451a03" />
-              <ellipse cx="43" cy="140" rx="3.5" ry="2.5" fill="#78350f" />
-              <path d="M 39,146 C 47,150 57,148 63,142" stroke="#78350f" stroke-width="1.5" fill="none" stroke-linecap="round" />
-
-              <!-- Dewlap / Gelambir Sapi -->
-              <path d="M 68,144 C 74,162 82,176 110,188" stroke="#d97706" stroke-width="1.2" fill="none" stroke-dasharray="3,3" />
-
-              <!-- Cow Tail with Bushy Tassel (Ekor Sapi Panjang dengan Rumbai Khas) -->
-              <path d="M 458,125 C 466,155 464,185 460,215" stroke="#78350f" stroke-width="2.5" fill="none" stroke-linecap="round" />
-              <path d="M 460,215 C 454,228 455,242 462,246 C 469,242 468,228 460,215 Z" fill="#451a03" stroke="#78350f" stroke-width="1.5" />
-
-              <!-- Cloven Hooves (Kuku Sapi Belah) -->
-              <rect x="124" y="267" width="22" height="8" rx="1" fill="#451a03" />
-              <line x1="135" y1="267" x2="135" y2="275" stroke="#fff" stroke-width="1" />
-              
-              <rect x="171" y="267" width="21" height="8" rx="1" fill="#451a03" />
-              <line x1="181" y1="267" x2="181" y2="275" stroke="#fff" stroke-width="1" />
-
-              <rect x="340" y="267" width="22" height="8" rx="1" fill="#451a03" />
-              <line x1="351" y1="267" x2="351" y2="275" stroke="#fff" stroke-width="1" />
-
-              <rect x="410" y="267" width="22" height="8" rx="1" fill="#451a03" />
-              <line x1="421" y1="267" x2="421" y2="275" stroke="#fff" stroke-width="1" />
-            </g>
-
-            <!-- ANATOMICAL BUTCHER CUT REGIONS (OVERLAY) -->
-            <!-- 1. CHUCK / NECK & PUNUK -->
-            <path id="part-chuck" class="cut-zone" data-cut="chuck" d="
-              M 115,100
-              C 130,78 150,72 175,76
-              L 170,180
-              C 145,182 125,175 105,150
-              Z
-            " fill="#fed7aa" stroke="#c2410c" stroke-width="2" />
-            <text x="138" y="132" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#9a3412" pointer-events="none">CHUCK</text>
-            <text x="138" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#c2410c" pointer-events="none">(Leher/Punuk)</text>
-
-            <!-- 2. RIB (IGA SAPI) -->
-            <path id="part-rib" class="cut-zone" data-cut="rib" d="
-              M 175,76
-              L 245,74
-              L 240,170
-              L 170,180
-              Z
-            " fill="#ffedd5" stroke="#c2410c" stroke-width="2" />
-            <text x="208" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#9a3412" pointer-events="none">RIB</text>
-            <text x="208" y="144" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" fill="#c2410c" pointer-events="none">(Iga Sapi)</text>
-
-            <!-- 3. TENDERLOIN (HAS DALAM) -->
-            <path id="part-loin" class="cut-zone active-zone" data-cut="tenderloin" d="
-              M 245,74
-              L 315,75
-              L 310,135
-              L 242,138
-              Z
-            " fill="#fecdd3" stroke="#be123c" stroke-width="2.5" />
-            <text x="278" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="#9f1239" pointer-events="none">TENDERLOIN</text>
-            <text x="278" y="119" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#be123c" pointer-events="none">★ Has Dalam</text>
-
-            <!-- 4. STRIPLOIN (HAS LUAR / SIRLOIN) -->
-            <path id="part-sirloin" class="cut-zone" data-cut="striploin" d="
-              M 315,75
-              L 385,82
-              L 380,155
-              L 310,135
-              Z
-            " fill="#fee2e2" stroke="#be123c" stroke-width="2.5" />
-            <text x="348" y="108" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#9f1239" pointer-events="none">STRIPLOIN</text>
-            <text x="348" y="121" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#be123c" pointer-events="none">★ Has Luar</text>
-
-            <!-- 5. ROUND (PAHA BELAKANG) -->
-            <path id="part-round" class="cut-zone" data-cut="round" d="
-              M 385,82
-              C 420,95 448,118 445,155
-              C 440,185 415,205 380,205
-              L 380,155
-              Z
-            " fill="#fed7aa" stroke="#c2410c" stroke-width="2" />
-            <text x="412" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#9a3412" pointer-events="none">ROUND</text>
-            <text x="412" y="161" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#c2410c" pointer-events="none">(Paha)</text>
-
-            <!-- 6. BRISKET / SANDUNG LAMUR (DADA BAWAH) -->
-            <path id="part-brisket" class="cut-zone" data-cut="brisket" d="
-              M 135,182
-              L 190,180
-              L 186,218
-              L 140,218
-              Z
-            " fill="#fef3c7" stroke="#d97706" stroke-width="1.8" />
-            <text x="162" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#b45309" pointer-events="none">BRISKET</text>
-
-            <!-- 7. FLANK / CREASTMEAT (PELENGKAP KALDU & OLAHAN) -->
-            <path id="part-flank" class="cut-zone" data-cut="creastmeat" d="
-              M 242,138
-              L 310,135
-              L 380,155
-              L 380,205
-              L 238,212
-              Z
-            " fill="#fef9c3" stroke="#ca8a04" stroke-width="1.8" />
-            <text x="310" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#854d0e" pointer-events="none">CREASTMEAT</text>
-            <text x="310" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#a16207" pointer-events="none">(Flank / Potongan Olahan)</text>
-          </svg>
-
-          <p style="font-size: 0.8rem; color: var(--ink-500); margin-top: 14px;">
-            💡 Klik tombol di bawah untuk melihat detail potongan:
+          <p style="font-size: 0.85rem; color: var(--ink-500); margin-top: 16px;">
+            💡 Klik potongan di bawah untuk melihat karakteristik daging &amp; rekomendasi masak:
           </p>
 
           <div class="beef-cuts-nav">
-            <button class="cut-tab-btn active" data-cut="tenderloin">Tenderloin (Has Dalam)</button>
-            <button class="cut-tab-btn" data-cut="striploin">Striploin (Has Luar)</button>
-            <button class="cut-tab-btn" data-cut="creastmeat">Creastmeat (Olahan)</button>
-            <button class="cut-tab-btn" data-cut="rib">Ribeye / Iga</button>
+            <button class="cut-tab-btn active" data-cut="tenderloin">Has Dalam (Tenderloin)</button>
+            <button class="cut-tab-btn" data-cut="striploin">Has Luar (Striploin)</button>
+            <button class="cut-tab-btn" data-cut="rib">Iga Sapi (Rib)</button>
+            <button class="cut-tab-btn" data-cut="creastmeat">Creastmeat (Sancan Olahan)</button>
+            <button class="cut-tab-btn" data-cut="brisket">Sandung Lamur (Brisket)</button>
+            <button class="cut-tab-btn" data-cut="chuck">Sampil (Chuck)</button>
+            <button class="cut-tab-btn" data-cut="round">Paha &amp; Gandik (Round)</button>
+            <button class="cut-tab-btn" data-cut="shank">Sengkel (Shank)</button>
+            <button class="cut-tab-btn" data-cut="oxtail">Buntut (Ox Tail)</button>
           </div>
         </div>
 
@@ -3659,93 +3546,190 @@
     });
 
     // ==========================================
-    // 2. PETA ANATOMI SAPI (BEEF CUT ANATOMY)
+    // 2. PETA ANATOMI SAPI (BEEF CUT ANATOMY - STANDAR BAKE.ID)
     // ==========================================
     const BEEF_CUTS_DATA = {
       tenderloin: {
         name: "Tenderloin (Has Dalam)",
-        sub: "Potongan Has Dalam Premium",
-        desc: "Potongan memanjang di bagian punggung dalam sapi. Karena otot ini jarang bekerja keras, seratnya sangat halus dan merupakan potongan terempuk di seluruh karkas sapi.",
+        sub: "Potongan Has Dalam Premium Terempuk",
+        desc: "Potongan memanjang di bagian punggung dalam sapi. Karena otot ini jarang bekerja keras, seratnya sangat halus, rendah lemak, dan merupakan potongan paling empuk di seluruh karkas sapi.",
         tenderness: "⭐⭐⭐⭐⭐ (Sangat Empuk)",
         marbling: "Rendah (Lean & Sehat)",
         doneness: "Medium Rare (55°C)",
-        cooking: "Pan-seared Steak, Roast, Shabu",
+        cooking: "Pan-seared Steak, Filet Mignon, Shabu-shabu, Roast Beef",
         productText: "Lihat Produk Tenderloin di Katalog →"
       },
       striploin: {
-        name: "Striploin (Has Luar)",
-        sub: "Potongan Has Luar Pilihan",
-        desc: "Potongan has luar yang berada di sepanjang punggung atas sapi dengan lapisan lemak gurih (fat cap) di satu sisinya. Menghasilkan rasa steak gurih khas dengan aroma kuat.",
-        tenderness: "⭐⭐⭐⭐½ (Empuk & Berlemak)",
+        name: "Striploin & Sirloin (Has Luar)",
+        sub: "Potongan Has Luar Pilihan Juicy",
+        desc: "Potongan has luar yang berada di sepanjang punggung atas sapi dengan lapisan lemak gurih (fat cap) di satu sisinya. Menghasilkan rasa steak gurih khas dengan aroma daging yang sangat kuat.",
+        tenderness: "⭐⭐⭐⭐½ (Empuk & Juicy)",
         marbling: "Sedang - Tinggi (Juicy)",
-        doneness: "Medium Rare (55°C)",
-        cooking: "Grilled Sirloin Steak, New York Strip, BBQ",
+        doneness: "Medium Rare (55°C) – Medium (60°C)",
+        cooking: "Grilled Sirloin Steak, New York Strip, Yakiniku, BBQ",
         productText: "Lihat Produk Striploin di Katalog →"
       },
       creastmeat: {
-        name: "Creastmeat (Potongan Olahan)",
-        sub: "Daging Olahan Istimewa",
-        desc: "Potongan daging sapi pilihan dengan tekstur serat yang kenyal padat dan kaya gelatin kaldu alami. Sangat tahan dimasak lama (slow-cook) hingga bumbu meresap sempurna.",
+        name: "Creastmeat (Sancan / Olahan)",
+        sub: "Potongan Daging Olahan Istimewa Berkaldu",
+        desc: "Potongan daging sapi pilihan dari area perut dan dada bawah dengan serat kenyal padat dan kaya gelatin kaldu alami. Sangat tahan dimasak lama (slow-cook) hingga bumbu meresap sempurna ke serat terdalam.",
         tenderness: "⭐⭐⭐⭐ (Empuk saat Slow Cook)",
-        marbling: "Sedang (Kaya Sari Kaldu)",
-        doneness: "Well Done (Slow Cook)",
-        cooking: "Rendang, Semur, Empal, Rawon, Sup",
+        marbling: "Sedang (Kaya Sari Kaldu Gurih)",
+        doneness: "Well Done (Slow Cook / Stew)",
+        cooking: "Rendang Padang, Semur Daging, Empal Gurih, Rawon, Sup Daging",
         productText: "Lihat Produk Creastmeat di Katalog →"
       },
       rib: {
-        name: "Ribeye & Iga (Rib Cut)",
-        sub: "Prime Rib Area",
-        desc: "Potongan daging iga yang kaya marbling intramuscular. Lemak meleleh sempurna saat dipanggang, menciptakan kelezatan gurih yang lembut dan berair.",
-        tenderness: "⭐⭐⭐⭐⭐ (Sangat Juicy)",
-        marbling: "Tinggi (Marbled)",
-        doneness: "Medium Rare - Medium",
-        cooking: "Tomahawk, Ribeye Steak, Iga Bakar",
+        name: "Iga Sapi & Ribeye (Rib Cut)",
+        sub: "Prime Rib Area Sangat Gurih",
+        desc: "Potongan daging iga yang kaya marbling lemak intramuscular. Lemak meleleh sempurna saat dipanggang, menciptakan kelezatan gurih yang lumer, lembut, dan kaya aroma kaldu.",
+        tenderness: "⭐⭐⭐⭐⭐ (Sangat Juicy & Lumer)",
+        marbling: "Tinggi (Rich Marbling)",
+        doneness: "Medium Rare – Medium",
+        cooking: "Ribeye Steak, Tomahawk, Iga Bakar Madu, Sop Konro",
         productText: "Konsultasi Ketersediaan Iga via WA →"
       },
+      shortloin: {
+        name: "Punggung (Short Loin)",
+        sub: "Potongan Steak Mewah T-Bone & Porterhouse",
+        desc: "Bagian punggung tengah sapi yang memadukan keempukan tenderloin dan kegurihan striploin yang dipisahkan oleh tulang berbentuk T (T-Bone). Pilihan favorit pecinta steak dunia.",
+        tenderness: "⭐⭐⭐⭐⭐ (Sangat Empuk & Beraroma)",
+        marbling: "Tinggi (Well Marbled)",
+        doneness: "Medium Rare (55°C)",
+        cooking: "T-Bone Steak, Porterhouse Steak, Pan-seared Butter Basting",
+        productText: "Konsultasi Short Loin via WA →"
+      },
       chuck: {
-        name: "Chuck & Punuk (Leher Sapi)",
-        sub: "Potongan Berkaldu Kuat",
-        desc: "Potongan dari bagian leher dan bahu depan sapi. Memiliki serat otot aktif dengan jaringan ikat kolagen yang melimpah, sangat gurih bila dimasak slow cook.",
-        tenderness: "⭐⭐⭐½ (Empuk saat Digulai)",
-        marbling: "Sedang (Gurih Kaldu Alami)",
-        doneness: "Well Done (Slow Cook)",
-        cooking: "Gulai, Rendang, Rawon, Semur, Baso",
-        productText: "Konsultasi Daging Olahan via WA →"
+        name: "Sampil (Chuck) & Punuk",
+        sub: "Potongan Berkaldu Kuat & Kaya Kolagen",
+        desc: "Potongan dari bagian leher dan bahu depan sapi. Memiliki serat otot aktif dengan jaringan ikat kolagen yang melimpah. Bila dimasak lambat (slow cook), daging menjadi sangat empuk dan kuahnya luar biasa gurih.",
+        tenderness: "⭐⭐⭐⭐ (Empuk Maksimal saat Slow Cook)",
+        marbling: "Sedang (Kaya Sari Kaldu Gurih)",
+        doneness: "Well Done (Slow Cook / Stew)",
+        cooking: "Rendang Padang, Rawon, Gulai Daging, Semur, Bakso Sapi",
+        productText: "Konsultasi Sampil / Chuck via WA →"
       },
       brisket: {
-        name: "Brisket (Sandung Lamur)",
-        sub: "Favorit BBQ Smokehouse & Soto",
-        desc: "Potongan dada bawah sapi dengan lapisan lemak gurih yang tebal. Cocok untuk hidangan slow smoke berjam-jam hingga empuk meleleh atau kuah soto gurih berkaldu.",
-        tenderness: "⭐⭐⭐⭐ (Empuk saat Dimasak Lama)",
-        marbling: "Tinggi (Fatty & Savory)",
+        name: "Sandung Lamur (Brisket)",
+        sub: "Favorit BBQ Smokehouse & Kuah Soto",
+        desc: "Potongan dada bawah sapi dengan lapisan lemak gurih yang tebal. Pilihan utama untuk hidangan slow smoke Texas BBQ berjam-jam hingga empuk meleleh atau kuah soto gurih berkaldu sedap.",
+        tenderness: "⭐⭐⭐⭐ (Empuk Meleleh saat Dimasak Lama)",
+        marbling: "Tinggi (Fat Layer & Gelatin)",
         doneness: "Low & Slow (95°C Internal)",
-        cooking: "Texas BBQ Brisket, Soto Daging, Rawon",
-        productText: "Konsultasi Ketersediaan Brisket via WA →"
+        cooking: "Texas Smoked Brisket, Soto Daging, Rawon Surabaya, Pho Beef",
+        productText: "Konsultasi Sandung Lamur via WA →"
+      },
+      plate: {
+        name: "Sancan Depan (Short Plate)",
+        sub: "Potongan Berlemak Gurih / Shabu Slice",
+        desc: "Daging perut depan sapi dengan lapisan lemak gurih berlapis. Bila dipotong tipis (short plate slice), sangat cocok untuk gyudon, shabu-shabu, sukiyaki, dan grill yakiniku ala resto Jepang.",
+        tenderness: "⭐⭐⭐⭐ (Juicy & Cepat Matang)",
+        marbling: "Tinggi (Lemak Lembut)",
+        doneness: "Quick Flash Fry / Simmer 10 Detik",
+        cooking: "Beef Bowl Gyudon, Shabu-shabu, Yakiniku Grill, Sukiyaki",
+        productText: "Lihat Produk Olahan di Katalog →"
+      },
+      flank: {
+        name: "Sancan Belakang (Flank)",
+        sub: "Serat Tegas Kaya Rasa Daging (Beefy)",
+        desc: "Bagian perut bawah samping dengan serat memanjang yang tegas. Memiliki cita rasa daging sapi paling kuat (beefy flavor), sangat sedap untuk fajitas, tumis daging kecap, dan steak marinade.",
+        tenderness: "⭐⭐⭐⭐ (Empuk jika Diiris Melintang)",
+        marbling: "Sedang (Rendah Lemak Jahat)",
+        doneness: "Medium (57°C)",
+        cooking: "Flank Steak, Mexican Fajitas, Tumis Lada Hitam, Dendeng Basah",
+        productText: "Konsultasi Potongan Flank via WA →"
       },
       round: {
-        name: "Round (Paha Belakang / Gandik)",
-        sub: "Daging Padat Rendah Lemak",
-        desc: "Potongan dari paha belakang sapi yang sangat padat serat dan minim lemak. Sangat cocok untuk olahan dendeng, empal, dan abon karena tidak mudah hancur.",
-        tenderness: "⭐⭐⭐ (Padat Bertekstur)",
-        marbling: "Sangat Rendah (Lean)",
+        name: "Round (Paha Belakang & Gandik)",
+        sub: "Daging Padat Rendah Lemak untuk Olahan",
+        desc: "Potongan dari paha belakang sapi yang sangat padat serat dan minim lemak. Bentuknya kokoh sehingga tidak mudah hancur, sangat ideal untuk rendang basah/kering, dendeng, empal, dan abon sapi.",
+        tenderness: "⭐⭐⭐ (Padat Bertekstur Mantap)",
+        marbling: "Sangat Rendah (Lean & High Protein)",
         doneness: "Medium / Slow Cook",
-        cooking: "Dendeng Balado, Empal Gurih, Abon Sapi",
+        cooking: "Dendeng Balado, Empal Goreng, Rendang Daging, Abon Sapi",
         productText: "Konsultasi Daging Paha via WA →"
+      },
+      shank: {
+        name: "Sengkel (Beef Shank)",
+        sub: "Kaya Kolagen & Urat Bening",
+        desc: "Daging betis sapi depan dan belakang yang kaya urat bening dan sumsum tulang. Bila dimasak lama, uratnya berubah menjadi kenyal empuk meleleh dan kuah masakan menjadi kental gurih alami.",
+        tenderness: "⭐⭐⭐⭐½ (Kenyal Lembut Berkolagen)",
+        marbling: "Rendah Lemak, Tinggi Kolagen",
+        doneness: "Slow Cook / Simmer Perlahan",
+        cooking: "Sop Buntut Sengkel, Soto Betawi, Semur Sengkel, Rawon Nguling",
+        productText: "Konsultasi Daging Sengkel via WA →"
+      },
+      oxtail: {
+        name: "Buntut Sapi (Ox Tail)",
+        sub: "Bagian Legendaris Berkaldu Kaya Gurih",
+        desc: "Potongan ekor sapi dengan daging lembut yang melekat pada ruas tulang bertulang rawan dan sumsum gurih. Menghasilkan kaldu sup paling gurih dan aromatik di dunia kuliner Nusantara.",
+        tenderness: "⭐⭐⭐⭐⭐ (Meleleh saat Direbus Lama)",
+        marbling: "Tinggi Kolagen & Sumsum Gurih",
+        doneness: "Well Done (Simmer 3-4 Jam / Presto)",
+        cooking: "Sop Buntut Spesial, Buntut Bakar Madu, Rawon Buntut",
+        productText: "Konsultasi Ketersediaan Buntut via WA →"
+      },
+      tongue: {
+        name: "Lidah Sapi (Beef Tongue)",
+        sub: "Tekstur Sangat Halus & Lembut",
+        desc: "Lidah sapi utuh pilihan dengan tekstur yang luar biasa lembut setelah dikupas kulit luarnya. Pilihan favorit untuk kuliner legendaris Indonesia seperti Sate Padang dan Bistik Lidah.",
+        tenderness: "⭐⭐⭐⭐⭐ (Ekstra Lembut & Lumer)",
+        marbling: "Rendah (Padat Lembut)",
+        doneness: "Well Done (Braise / Rebus Rempah)",
+        cooking: "Sate Padang, Bistik Lidah Sapi, Lidah Asap Sambal Ijo",
+        productText: "Konsultasi Stok Lidah via WA →"
+      },
+      head: {
+        name: "Kepala (Head) & Olahan",
+        sub: "Kikil & Daging Kepala Kenyal Gurih",
+        desc: "Bagian kepala sapi menghasilkan daging kenyal dan kulit gurih yang kaya kolagen. Sangat digemari untuk hidangan tradisional Soto Tangkar, Gulai Kikil, dan Krecek.",
+        tenderness: "⭐⭐⭐⭐ (Kenyal Lembut)",
+        marbling: "Kaya Gelatin Alami",
+        doneness: "Well Done (Presto)",
+        cooking: "Soto Tangkar, Gulai Kikil Padang, Sambal Goreng Krecek",
+        productText: "Konsultasi Bagian Kepala via WA →"
+      },
+      neck: {
+        name: "Leher Sapi (Neck)",
+        sub: "Daging Berserat Halus Berkaldu",
+        desc: "Potongan leher sapi yang memiliki serat padat dan kandungan kolagen tinggi. Sangat sedap diolah menjadi empal gentong, gulai berempah, atau abon.",
+        tenderness: "⭐⭐⭐½ (Empuk saat Direbus)",
+        marbling: "Sedang (Kaldu Kuat)",
+        doneness: "Slow Cook",
+        cooking: "Empal Gentong Cirebon, Gulai Leher, Semur Daging",
+        productText: "Konsultasi Daging Leher via WA →"
+      },
+      cheek: {
+        name: "Pipi Sapi (Beef Cheek)",
+        sub: "Otot Pipi Lembut Kaya Gelatin",
+        desc: "Otot pipi sapi yang kaya jaringan kolagen. Bila dimasak braising perlahan, seratnya akan meleleh lembut dan menghasilkan saus daging yang sangat kental dan kaya rasa.",
+        tenderness: "⭐⭐⭐⭐⭐ (Melt-in-the-Mouth)",
+        marbling: "Tinggi Gelatin Alami",
+        doneness: "Slow Braise (85°C – 90°C)",
+        cooking: "Braised Beef Cheek, Rendang Spesial, Rawon Pipi",
+        productText: "Konsultasi Daging Pipi via WA →"
       }
     };
 
     function selectBeefCut(cutKey) {
+      if (!BEEF_CUTS_DATA[cutKey]) return;
+
+      // Update active state di tombol-tombol nav
       document.querySelectorAll(".cut-tab-btn").forEach(b => {
         b.classList.toggle("active", b.dataset.cut === cutKey);
       });
 
-      document.querySelectorAll(".cut-zone").forEach(z => {
-        z.classList.toggle("active-zone", z.dataset.cut === cutKey);
+      // Update active state di SVG callout badge
+      document.querySelectorAll(".callout-badge").forEach(b => {
+        b.classList.toggle("active-badge", b.dataset.cut === cutKey);
+      });
+
+      // Update active state di SVG chalk cut polygon
+      document.querySelectorAll(".chalk-cut").forEach(c => {
+        c.classList.toggle("active-cut", c.dataset.cut === cutKey);
       });
 
       const data = BEEF_CUTS_DATA[cutKey];
-      if (!data) return;
-
       document.getElementById("cutName").textContent = data.name;
       document.getElementById("cutSub").textContent = data.sub;
       document.getElementById("cutDesc").textContent = data.desc;
@@ -3756,13 +3740,15 @@
       document.getElementById("cutProductLink").textContent = data.productText;
     }
 
+    // Event listener untuk tombol tab
     document.querySelectorAll(".cut-tab-btn").forEach(btn => {
       btn.addEventListener("click", () => selectBeefCut(btn.dataset.cut));
     });
 
-    document.querySelectorAll(".cut-zone").forEach(zone => {
-      zone.addEventListener("click", () => {
-        const cut = zone.dataset.cut;
+    // Event listener untuk elemen klik di SVG (badge dan poligon potongan)
+    document.querySelectorAll(".callout-badge, .chalk-cut").forEach(el => {
+      el.addEventListener("click", () => {
+        const cut = el.dataset.cut;
         if (cut && BEEF_CUTS_DATA[cut]) {
           selectBeefCut(cut);
         }
