@@ -687,17 +687,18 @@
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
     .product-card {
       background: #ffffff;
       border: 1px solid var(--cream-border);
       border-radius: var(--radius-lg);
-      padding: 26px;
+      padding: 22px 18px;
       display: flex;
       flex-direction: column;
+      height: 100%;
       transition: all 0.25s ease;
       position: relative;
     }
@@ -790,8 +791,9 @@
     .product-meta-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 3px 0;
+      align-items: baseline;
+      gap: 8px;
+      padding: 4px 0;
       border-bottom: 1px dashed var(--cream-border);
     }
 
@@ -802,18 +804,23 @@
     .meta-label {
       color: var(--ink-500);
       font-weight: 500;
+      flex-shrink: 0;
     }
 
     .meta-val {
       font-weight: 700;
       color: var(--ink-900);
       text-align: right;
+      word-break: break-word;
     }
 
     .product-card .btn {
       width: 100%;
-      padding: 11px 16px;
-      font-size: 0.88rem;
+      padding: 11px 12px;
+      font-size: 0.86rem;
+      margin-top: auto;
+      text-align: center;
+      white-space: nowrap;
     }
 
     /* ==========================================================================
@@ -1597,7 +1604,7 @@
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 36px;
-      align-items: center;
+      align-items: start;
     }
     .anatomy-diagram-card {
       background: #ffffff;
@@ -1607,6 +1614,7 @@
       box-shadow: var(--card-shadow);
       text-align: center;
       position: relative;
+      margin-top: 0;
     }
     .beef-cuts-nav {
       display: flex;
@@ -1653,8 +1661,9 @@
       background: #ffffff;
       border: 1px solid var(--cream-border);
       border-radius: var(--radius-xl);
-      padding: 32px;
+      padding: 30px;
       box-shadow: var(--card-shadow);
+      margin-top: 0;
     }
     .cut-title-row {
       display: flex;
@@ -1956,19 +1965,36 @@
     }
 
     /* ==========================================================================
-       TESTIMONIALS & SOCIAL PROOF
+       SECTION 6.5: TESTIMONIALS & SOCIAL PROOF (AUTO-SLIDER)
        ========================================================================== */
     .section-testimonials {
       padding: 90px 0;
       background: var(--cream-bg);
       border-top: 1px solid var(--cream-border);
+      position: relative;
     }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+    .testi-slider-wrapper {
+      position: relative;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .testi-carousel {
+      overflow: hidden;
+      width: 100%;
+      padding: 12px 2px 20px;
+      user-select: none;
+    }
+    .testi-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
     }
     .testi-card {
+      /* Di desktop: tampil 3 kartu sebaris */
+      flex: 0 0 calc((100% - 40px) / 3);
+      box-sizing: border-box;
+      min-width: 0;
       background: #ffffff;
       border: 1px solid var(--cream-border);
       border-radius: var(--radius-lg);
@@ -1977,7 +2003,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .testi-card:hover {
       transform: translateY(-4px);
@@ -1987,6 +2013,7 @@
       color: #f59e0b;
       font-size: 1.1rem;
       margin-bottom: 12px;
+      letter-spacing: 2px;
     }
     .testi-quote {
       font-size: 0.92rem;
@@ -2024,6 +2051,62 @@
     }
     .testi-author-info p {
       font-size: 0.74rem;
+      color: var(--ink-500);
+      margin-top: 2px;
+    }
+    /* Tombol Navigasi Slider */
+    .testi-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--cream-border);
+      box-shadow: 0 4px 14px rgba(41, 23, 15, 0.12);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .testi-nav-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 18px rgba(159, 18, 57, 0.3);
+    }
+    .testi-nav-prev {
+      left: -22px;
+    }
+    .testi-nav-next {
+      right: -22px;
+    }
+    .testi-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .testi-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--cream-border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      padding: 0;
+    }
+    .testi-dot.active {
+      background: var(--primary);
+      width: 26px;
+    }
       color: var(--ink-500);
     }
 
@@ -2083,6 +2166,18 @@
        RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
        ========================================================================== */
     @media (max-width: 960px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .testi-card {
+        flex: 0 0 calc((100% - 20px) / 2);
+      }
+
+      .testi-nav-prev { left: -10px; }
+      .testi-nav-next { right: -10px; }
+
       .hero-grid,
       .coldchain-grid,
       .legal-grid,
@@ -2312,14 +2407,18 @@
       }
 
       /* Testimonials Mobile */
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+      .testi-card {
+        flex: 0 0 100%;
+        padding: 22px 18px;
       }
 
-      .testi-card {
-        padding: 20px 16px;
+      .testi-nav-btn {
+        width: 38px;
+        height: 38px;
       }
+
+      .testi-nav-prev { left: 4px; }
+      .testi-nav-next { right: 4px; }
 
       /* Products Mobile */
       .filter-tabs {
@@ -2334,7 +2433,7 @@
 
       .products-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 16px;
       }
 
       .product-card {
@@ -3187,63 +3286,157 @@
         </p>
       </div>
 
-      <div class="testimonials-grid">
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">
-            "Striploin dari CMM Meat punya fat cap yang sangat wangi saat kena grill panas. Potongannya rapi, label gramaturnya presisi sampai 2 desimal jadi mempermudah kalkulasi food cost restoran kami."
-          </p>
-          <div class="testi-author">
-            <div class="testi-avatar">CH</div>
-            <div class="testi-author-info">
-              <h5>Chef Hendra</h5>
-              <p>Head Chef &amp; Owner Resto Grill, Depok</p>
+      <div class="testi-slider-wrapper">
+        <button class="testi-nav-btn testi-nav-prev" id="testiPrevBtn" aria-label="Review Sebelumnya">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <div class="testi-carousel" id="testiViewport">
+          <div class="testi-track" id="testiTrack">
+            <!-- 1. Chef Hendra -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Striploin dari CMM Meat punya fat cap yang sangat wangi saat kena grill panas. Potongannya rapi, label gramaturnya presisi sampai 2 desimal jadi mempermudah kalkulasi food cost restoran kami."
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">CH</div>
+                <div class="testi-author-info">
+                  <h5>Chef Hendra</h5>
+                  <p>Head Chef &amp; Owner Resto Grill, Depok</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Ibu Ratna W. -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Paling tenang kalau pesan di sini karena ada sertifikat Halal resmi dan izin NKV RPH. Klien katering kami sangat mementingkan aspek kehalalan dan kebersihan bahan baku."
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">IR</div>
+                <div class="testi-author-info">
+                  <h5>Ibu Ratna W.</h5>
+                  <p>Owner 'Dapur Berkah' Katering &amp; Bento</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Dimas Pratama -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Tenderloinnya beneran empuk banget, dimasak Medium Rare cukup 3 menit per sisi di teflon rumah udah kayak makan di restoran bintang lima. Anak-anak langsung suka!"
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">DP</div>
+                <div class="testi-author-info">
+                  <h5>Dimas Pratama</h5>
+                  <p>Pelanggan Retail &amp; Home Cook, Cimanggis</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Bpk. Suryo -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Creastmeat-nya juara kalau buat rendang padang atau semur. Kuah kaldu dagingnya keluar gurih pekat dan serat dagingnya empuk meresap bumbu tanpa hancur."
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">BS</div>
+                <div class="testi-author-info">
+                  <h5>Bpk. Suryo</h5>
+                  <p>Pengusaha Rumah Makan &amp; Reseller</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Chef Farhan Malik (Baru) -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Striploin Steak Ready-nya beneran memangkas waktu persiapan dapur kami. Potongan porsinya seragam, marbling-nya cantik, dan saat di-sear aromanya mantap. Kualitas lokal berstandar resto!"
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">FM</div>
+                <div class="testi-author-info">
+                  <h5>Chef Farhan Malik</h5>
+                  <p>Executive Chef Steakhouse &amp; Konsultan, Jaksel</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Ibu Maya Safitri (Baru) -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Kalkulator Party Planner di website ini ngebantu banget waktu bikin acara BBQ keluarga 20 orang. Estimasi Kg-nya pas, daging chill sampai rumah masih dingin segar dan higienis!"
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">MS</div>
+                <div class="testi-author-info">
+                  <h5>Ibu Maya Safitri</h5>
+                  <p>Penggiat Arisan &amp; Home BBQ, Sawangan</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Bpk. H. Ahmad Fauzi (Baru) -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Sangat terbantu dengan jaminan cold chain dan legalitas NKV resminya. Tekstur daging fresh, susut bobot sangat minim, dan pengiriman selalu tepat waktu sesuai pesanan."
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">AF</div>
+                <div class="testi-author-info">
+                  <h5>Bpk. H. Ahmad Fauzi</h5>
+                  <p>Pengurus Katering Aqiqah &amp; Hajatan, Tapos</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. Kevin Gunawan (Baru) -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Tenderloin dan Striploin-nya punya juicy yang bertahan sangat baik meski setelah proses resting. Rasanya clean, aroma daging segar alami tanpa bau prengus sama sekali."
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">KG</div>
+                <div class="testi-author-info">
+                  <h5>Kevin Gunawan</h5>
+                  <p>Meat Enthusiast &amp; BBQ Pitmaster, Depok</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 9. Amanda Putri (Baru) -->
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">
+                "Label gramasi dan tanggal kadaluwarsa di kemasannya sangat rapi dan informatif, bikin pencatatan stok gudang jadi gampang. Pelayanan ramah dan respon WhatsApp gerak cepat!"
+              </p>
+              <div class="testi-author">
+                <div class="testi-avatar">AP</div>
+                <div class="testi-author-info">
+                  <h5>Amanda Putri</h5>
+                  <p>Owner 'MeatBowl Express' UMKM Kuliner, Beji</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">
-            "Paling tenang kalau pesan di sini karena ada sertifikat Halal resmi dan izin NKV RPH. Klien katering kami sangat mementingkan aspek kehalalan dan kebersihan bahan baku."
-          </p>
-          <div class="testi-author">
-            <div class="testi-avatar">IR</div>
-            <div class="testi-author-info">
-              <h5>Ibu Ratna W.</h5>
-              <p>Owner 'Dapur Berkah' Katering &amp; Bento</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">
-            "Tenderloinnya beneran empuk banget, dimasak Medium Rare cukup 3 menit per sisi di teflon rumah udah kayak makan di restoran bintang lima. Anak-anak langsung suka!"
-          </p>
-          <div class="testi-author">
-            <div class="testi-avatar">DP</div>
-            <div class="testi-author-info">
-              <h5>Dimas Pratama</h5>
-              <p>Pelanggan Retail &amp; Home Cook, Cimanggis</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">
-            "Creastmeat-nya juara kalau buat rendang padang atau semur. Kuah kaldu dagingnya keluar gurih pekat dan serat dagingnya empuk meresap bumbu tanpa hancur."
-          </p>
-          <div class="testi-author">
-            <div class="testi-avatar">BS</div>
-            <div class="testi-author-info">
-              <h5>Bpk. Suryo</h5>
-              <p>Pengusaha Rumah Makan &amp; Reseller</p>
-            </div>
-          </div>
-        </div>
+        <button class="testi-nav-btn testi-nav-next" id="testiNextBtn" aria-label="Review Selanjutnya">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
+
+      <!-- Titik Indikator Slider -->
+      <div class="testi-dots" id="testiDots"></div>
     </div>
   </section>
 
@@ -4037,6 +4230,164 @@
         });
       });
     }
+
+    // ==========================================
+    // 11. TESTIMONIALS AUTO-SLIDER & CAROUSEL
+    // ==========================================
+    (function initTestimonialsSlider() {
+      const track = document.getElementById("testiTrack");
+      const viewport = document.getElementById("testiViewport");
+      const prevBtn = document.getElementById("testiPrevBtn");
+      const nextBtn = document.getElementById("testiNextBtn");
+      const dotsContainer = document.getElementById("testiDots");
+      if (!track || !viewport) return;
+
+      const cards = track.querySelectorAll(".testi-card");
+      const totalCards = cards.length;
+      let currentIndex = 0;
+      let autoSlideTimer = null;
+      const slideInterval = 3500; // 3.5 detik
+
+      function getVisibleCount() {
+        const width = window.innerWidth;
+        if (width <= 640) return 1;
+        if (width <= 992) return 2;
+        return 3;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, totalCards - getVisibleCount());
+      }
+
+      function renderDots() {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = "";
+        const maxIdx = getMaxIndex();
+        for (let i = 0; i <= maxIdx; i++) {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = `testi-dot ${i === currentIndex ? "active" : ""}`;
+          dot.setAttribute("aria-label", `Ulasan ke-${i + 1}`);
+          dot.addEventListener("click", () => {
+            goToSlide(i);
+            resetAutoSlide();
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        if (!dotsContainer) return;
+        const dots = dotsContainer.querySelectorAll(".testi-dot");
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle("active", idx === currentIndex);
+        });
+      }
+
+      function updateSlidePosition() {
+        if (!cards.length) return;
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = 20;
+        const offset = currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+        updateDots();
+      }
+
+      function goToSlide(index) {
+        const maxIdx = getMaxIndex();
+        if (index > maxIdx) {
+          currentIndex = 0;
+        } else if (index < 0) {
+          currentIndex = maxIdx;
+        } else {
+          currentIndex = index;
+        }
+        updateSlidePosition();
+      }
+
+      function nextSlide() {
+        const maxIdx = getMaxIndex();
+        if (currentIndex >= maxIdx) {
+          goToSlide(0);
+        } else {
+          goToSlide(currentIndex + 1);
+        }
+      }
+
+      function prevSlide() {
+        const maxIdx = getMaxIndex();
+        if (currentIndex <= 0) {
+          goToSlide(maxIdx);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+      }
+
+      function startAutoSlide() {
+        stopAutoSlide();
+        autoSlideTimer = setInterval(nextSlide, slideInterval);
+      }
+
+      function stopAutoSlide() {
+        if (autoSlideTimer) {
+          clearInterval(autoSlideTimer);
+          autoSlideTimer = null;
+        }
+      }
+
+      function resetAutoSlide() {
+        stopAutoSlide();
+        startAutoSlide();
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+          prevSlide();
+          resetAutoSlide();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          nextSlide();
+          resetAutoSlide();
+        });
+      }
+
+      // Jeda otomatis jika mouse diarahkan ke ulasan (agar nyaman dibaca)
+      const wrapper = document.querySelector(".testi-slider-wrapper") || viewport;
+      wrapper.addEventListener("mouseenter", stopAutoSlide);
+      wrapper.addEventListener("mouseleave", startAutoSlide);
+
+      // Dukungan sentuhan / swipe di mobile & tablet
+      let touchStartX = 0;
+      let touchEndX = 0;
+      viewport.addEventListener("touchstart", (e) => {
+        stopAutoSlide();
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      viewport.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) nextSlide();
+          else prevSlide();
+        }
+        startAutoSlide();
+      }, { passive: true });
+
+      window.addEventListener("resize", () => {
+        const maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = maxIdx;
+        renderDots();
+        updateSlidePosition();
+      });
+
+      renderDots();
+      updateSlidePosition();
+      startAutoSlide();
+    })();
   </script>
 </body>
 </html>
