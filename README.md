@@ -2,32 +2,33 @@
 
 Website profil dan katalog resmi untuk **CMM Meat (Local Meat Shop)**, diproduksi oleh **PT. Berkah Marsha Sejahtera** (Depok, Jawa Barat).
 
-Dibuat sebagai bonus eksklusif yang melengkapi sistem aplikasi cetak label pabrik Marsha Beef.
+Dibuat sebagai bonus eksklusif yang melengkapi sistem aplikasi Marsha Beef.
 
 ---
 
 ## 🌟 Fitur Utama
 
-1. **Desain Modern & Responsif**: Tampilan mewah, bersih, dan dioptimalkan untuk perangkat mobile (smartphone) & desktop.
-2. **Katalog Produk Nyata**:
-   - **Tenderloin** (Kode 1001) – Has Dalam
-   - **Striploin** (Kode 1002) – Has Luar
-   - **Striploin Steak Ready** (Kode 1003) – Siap Panggang / Masak
-   - **Creastmeat** (Kode 1004) – Daging Olahan Istimewa
-3. **Simulasi Label Fisik Interaktif (100×75 mm)**:
-   - Menampilkan replika label cetak asli lengkap dengan logo Halal Indonesia, registrasi NKV, tanggal potong, dan instruksi suhu simpan.
-   - **Live CODE128 Barcode Generator**: Barcode 23-digit nyata yang di-render secara dinamis dalam format vektor SVG murni tanpa butuh CDN/koneksi internet.
-4. **Formulir Pemesanan Cepat ke WhatsApp**:
+1. **Desain Modern & Responsif**: Tampilan mewah, bersih, dan dioptimalkan 100% untuk smartphone (mobile) & desktop tanpa horizontal overflow.
+2. **Katalog Potongan Pilihan**:
+   - **Tenderloin** (Has Dalam) – Potongan terempuk, rendah lemak.
+   - **Striploin** (Has Luar) – Favorit steak grill dengan aroma fat-cap gurih.
+   - **Striploin Steak Ready** – Porsi rapi siap panggang / masak untuk resto & keluarga.
+   - **Creastmeat** – Potongan olahan berkaldu kaya rasa untuk rendang, semur, dan sup.
+3. **Peta Anatomi Sapi Interaktif**: Edukasi visual bagian karkas sapi lengkap dengan tingkat keempukan, marbling, dan saran metode masak.
+4. **Panduan Kematangan Steak (Steak Doneness Master)**: Visual irisan melintang, target temperatur inti (°C), dan panduan waktu panggang (Rare hingga Well Done).
+5. **Party & BBQ Meat Planner**: Kalkulator porsi daging cerdas sesuai jumlah tamu dan jenis hidangan (Steak / Shabu / BBQ Santai).
+6. **Formulir Pemesanan Cepat ke WhatsApp**:
    - Kalkulator pemesanan interaktif (pilihan produk, suhu Chill/Frozen, jumlah Kg, catatan).
-   - Menghasilkan format pesan WhatsApp rapi secara otomatis sekali klik.
-5. **Edukasi Cold Chain (Rantai Dingin)**:
+   - Menghasilkan format pesan WhatsApp rapi secara otomatis sekali klik ke nomor resmi CS.
+7. **Panduan Cold Chain & Tips Thawing**:
    - Membedakan standar simpan **CHILL (0°C)** (hingga 90 hari) dan **FROZEN (-18°C)** (hingga 365 hari).
-6. **Keabsahan & Legalitas Terpercaya**:
-   - Sertifikasi Halal Indonesia.
+   - 3 metode pencairan daging beku yang higienis tanpa merusak nutrisi.
+8. **Keabsahan & Legalitas Terpercaya**:
+   - Sertifikasi Halal Indonesia resmi.
    - Nomor Kontrol Veteriner **NKV RPH-3276041-016**.
-7. **Performa Super Cepat**:
+9. **Performa Super Cepat**:
    - Zero framework overhead (Pure Semantic HTML5 + Modern CSS + Vanilla JS).
-   - Ukuran file sangat ringan (< 100 KB total), loading di bawah 100 milidetik.
+   - Ukuran file sangat ringan, loading instan di bawah 100 milidetik, offline-ready.
 
 ---
 
@@ -84,4 +85,5 @@ cmm-meat/
 
 ---
 
+Crafted With Coffee By [idnx](https://saepullrock.tech)  
 &copy; PT. Berkah Marsha Sejahtera – Seluruh hak cipta dilindungi.

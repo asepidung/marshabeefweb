@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CMM Meat – Local Meat Shop & Suplai Daging Sapi Berkualitas</title>
-  <meta name="description" content="CMM Meat menyediakan daging sapi segar (chill) dan beku (frozen) berkualitas. 100% Halal Indonesia, ber-NKV RPH resmi, diproduksi oleh PT. Berkah Marsha Sejahtera dengan label barcode presisi.">
+  <meta name="description" content="CMM Meat menyediakan daging sapi segar (chill) dan beku (frozen) berkualitas. 100% Halal Indonesia, ber-NKV RPH resmi, higienis, dan terpercaya diproduksi oleh PT. Berkah Marsha Sejahtera.">
   <meta name="keywords" content="cmm meat, toko daging lokal, daging sapi depok, tenderloin, striploin, daging halal, NKV, berkah marsha sejahtera">
   <meta name="theme-color" content="#881337">
   
   <!-- OpenGraph -->
   <meta property="og:title" content="CMM Meat – Daging Sapi Pilihan Berkualitas & Terstandar">
-  <meta property="og:description" content="Daging sapi higienis berlogo Halal Indonesia & ber-NKV RPH-3276041-016. Kemasan rapi berlabel barcode presisi.">
+  <meta property="og:description" content="Daging sapi higienis berlogo Halal Indonesia & ber-NKV RPH-3276041-016. Potongan rapi, segar, dan siap kirim.">
   <meta property="og:image" content="logo.png">
   <meta property="og:type" content="website">
 
@@ -792,327 +792,6 @@
       width: 100%;
       padding: 11px 16px;
       font-size: 0.88rem;
-    }
-
-    /* ==========================================================================
-       SECTION 3: LIVE INTERACTIVE LABEL SIMULATION (100x75 mm)
-       ========================================================================== */
-    .section-label {
-      padding: 90px 0;
-      background: #ffffff;
-      border-top: 1px solid var(--cream-border);
-      border-bottom: 1px solid var(--cream-border);
-    }
-
-    .label-showcase-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    /* Label Physical Canvas Simulation */
-    .label-wrapper-container {
-      background: radial-gradient(circle at 50% 50%, #f7f1e6 0%, #ede3d1 100%);
-      padding: 30px;
-      border-radius: var(--radius-xl);
-      border: 2px dashed #dacbb6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .label-meta-header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--ink-700);
-    }
-
-    /* Realistic 100x75 mm Label replica */
-    .printed-label {
-      width: 100%;
-      max-width: 380px;
-      aspect-ratio: 100 / 75;
-      background: #ffffff;
-      border: 2.5px solid #000000;
-      border-radius: 8px;
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 16px 32px rgba(40, 20, 10, 0.15);
-      font-family: Arial, Helvetica, sans-serif;
-      color: #000000;
-      user-select: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .lbl-header {
-      border-bottom: 2px solid #000000;
-      padding-bottom: 3px;
-      margin-bottom: 4px;
-    }
-
-    .lbl-header-line {
-      display: flex;
-      align-items: baseline;
-      white-space: nowrap;
-    }
-
-    .lbl-prod-label {
-      font-size: 9px;
-      font-weight: normal;
-    }
-
-    .lbl-company {
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 0.2px;
-      margin-left: 4px;
-    }
-
-    .lbl-address {
-      font-size: 7px;
-      line-height: 1.1;
-      margin-top: 1px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .lbl-product-title {
-      background: #000000;
-      color: #ffffff !important;
-      font-size: 16px;
-      font-weight: 900;
-      padding: 3px 8px;
-      border-radius: 3px;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .lbl-info-grid {
-      display: flex;
-      border: 2px solid #000000;
-      border-radius: 4px;
-      margin-bottom: 4px;
-      flex-grow: 1;
-      min-height: 0;
-    }
-
-    .lbl-main-box {
-      flex: 0 0 54%;
-      border-right: 2px solid #000000;
-      padding: 4px 6px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .lbl-pcs {
-      position: absolute;
-      top: 4px;
-      right: 6px;
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .lbl-weight-caption {
-      font-size: 7px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .lbl-weight-row {
-      display: flex;
-      align-items: baseline;
-      margin: 1px 0;
-    }
-
-    .lbl-weight-val {
-      font-size: 32px;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -1px;
-    }
-
-    .lbl-weight-unit {
-      font-size: 12px;
-      font-weight: bold;
-      margin-left: 3px;
-    }
-
-    .lbl-dates {
-      font-size: 9.5px;
-      font-weight: bold;
-      line-height: 1.3;
-    }
-
-    .lbl-date-row {
-      display: flex;
-      gap: 6px;
-    }
-
-    .lbl-date-lbl {
-      width: 46px;
-    }
-
-    .lbl-halal-box {
-      flex: 1;
-      padding: 4px 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
-
-    .lbl-halal-box img {
-      width: 85%;
-      max-height: 38px;
-      object-fit: contain;
-    }
-
-    .lbl-nkv {
-      font-size: 8.5px;
-      font-weight: bold;
-      letter-spacing: 0.2px;
-      text-align: center;
-    }
-
-    .lbl-type-bar {
-      background: #000000;
-      color: #ffffff !important;
-      text-align: center;
-      font-size: 11px;
-      font-weight: bold;
-      padding: 2.5px;
-      border-radius: 3px;
-      margin-bottom: 3px;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .lbl-barcode-area {
-      text-align: center;
-      padding-top: 1px;
-    }
-
-    .lbl-barcode-svg {
-      width: 100%;
-      height: 28px;
-      display: block;
-    }
-
-    .lbl-barcode-text {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      margin-top: 1px;
-      color: #000000;
-    }
-
-    /* Label Controls & Interactive Selector */
-    .label-presets {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .preset-btn {
-      background: #ffffff;
-      border: 1px solid var(--cream-border);
-      border-radius: var(--radius-sm);
-      padding: 6px 12px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      color: var(--ink-700);
-      transition: all 0.2s ease;
-    }
-
-    .preset-btn.active {
-      background: var(--ink-900);
-      color: #ffffff;
-      border-color: var(--ink-900);
-    }
-
-    .label-explanation {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .explain-card {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      background: var(--cream-surface);
-      border: 1px solid var(--cream-border);
-      border-radius: var(--radius-md);
-      padding: 16px;
-    }
-
-    .explain-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 0.88rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .explain-content h4 {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: var(--ink-900);
-      margin-bottom: 4px;
-    }
-
-    .explain-content p {
-      font-size: 0.86rem;
-      color: var(--ink-500);
-      line-height: 1.5;
-    }
-
-    .code-breakdown {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-    }
-
-    .code-chip {
-      background: var(--ink-100);
-      border: 1px solid #e0dbd0;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: var(--ink-900);
     }
 
     /* ==========================================================================
@@ -2093,77 +1772,6 @@
     }
 
     /* ==========================================================================
-       BARCODE DECODER TOOL (TRACEABILITY TESTER)
-       ========================================================================== */
-    .barcode-decoder-wrapper {
-      margin-top: 40px;
-      background: #ffffff;
-      border: 1px solid var(--cream-border);
-      border-radius: var(--radius-xl);
-      padding: 30px;
-      box-shadow: var(--card-shadow);
-      width: 100%;
-    }
-    .decoder-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .decoder-input-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .decoder-input {
-      flex: 1;
-      min-width: 240px;
-      padding: 12px 16px;
-      font-family: var(--font-mono);
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 2px solid var(--cream-border);
-      border-radius: var(--radius-md);
-      background: var(--cream-surface);
-      color: var(--ink-900);
-      outline: none;
-      letter-spacing: 1.5px;
-    }
-    .decoder-input:focus {
-      border-color: var(--primary);
-      background: #ffffff;
-    }
-    .decoder-results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 12px;
-      background: var(--cream-surface);
-      border: 1px solid var(--cream-border);
-      border-radius: var(--radius-md);
-      padding: 16px;
-    }
-    .decoder-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .decoder-item-label {
-      font-size: 0.72rem;
-      color: var(--ink-500);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-    .decoder-item-val {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--ink-900);
-    }
-
-    /* ==========================================================================
        PARTY & BBQ PLANNER (KALKULATOR PORSI)
        ========================================================================== */
     .section-partyplanner {
@@ -2434,7 +2042,6 @@
        ========================================================================== */
     @media (max-width: 960px) {
       .hero-grid,
-      .label-showcase-grid,
       .coldchain-grid,
       .legal-grid,
       .contact-card,
@@ -2576,7 +2183,6 @@
       .section-thawing,
       .section-testimonials,
       .section-products,
-      .section-label,
       .section-coldchain,
       .section-legal,
       .section-segments,
@@ -2593,8 +2199,7 @@
       .party-result-card,
       .legal-card,
       .contact-card,
-      .order-box,
-      .barcode-decoder-wrapper {
+      .order-box {
         padding: 22px 16px;
         border-radius: var(--radius-lg);
       }
@@ -2639,77 +2244,6 @@
 
       .result-kg-big {
         font-size: 2.5rem;
-      }
-
-      /* Label 100x75 mm Mobile Scaler */
-      .label-wrapper-container {
-        padding: 16px 10px;
-      }
-
-      .printed-label {
-        padding: 8px 10px;
-        border-width: 2px;
-      }
-
-      .lbl-product-title {
-        font-size: clamp(12px, 3.8vw, 15px);
-        padding: 2px 6px;
-      }
-
-      .lbl-weight-val {
-        font-size: clamp(24px, 7vw, 32px);
-      }
-
-      .lbl-barcode-text {
-        font-size: clamp(8.5px, 2.7vw, 11px);
-        letter-spacing: 1px;
-      }
-
-      .lbl-company {
-        font-size: clamp(9px, 2.8vw, 11px);
-      }
-
-      .lbl-address {
-        font-size: 6.5px;
-      }
-
-      .lbl-type-bar {
-        font-size: 9.5px;
-        padding: 2px;
-      }
-
-      .lbl-dates {
-        font-size: 8.5px;
-      }
-
-      .lbl-date-lbl {
-        width: 38px;
-      }
-
-      .lbl-nkv {
-        font-size: 7.5px;
-      }
-
-      /* Decoder Tool Mobile */
-      .decoder-input-row {
-        flex-direction: column;
-      }
-
-      .decoder-input {
-        min-width: 0;
-        width: 100%;
-        font-size: 0.85rem;
-        letter-spacing: 0.5px;
-      }
-
-      .decoder-input-row .btn {
-        width: 100%;
-      }
-
-      .decoder-results-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        padding: 12px;
       }
 
       /* Thawing Mobile */
@@ -2796,10 +2330,6 @@
         display: none;
       }
 
-      .decoder-results-grid {
-        grid-template-columns: 1fr;
-      }
-
       .contact-detail-row {
         gap: 10px;
       }
@@ -2867,7 +2397,6 @@
           <li><a href="#anatomi" class="nav-link">Peta Potongan</a></li>
           <li><a href="#produk" class="nav-link">Katalog</a></li>
           <li><a href="#doneness" class="nav-link">Doneness Steak</a></li>
-          <li><a href="#label" class="nav-link">Standar Label</a></li>
           <li><a href="#party" class="nav-link">Hitung Porsi</a></li>
           <li><a href="#suhu" class="nav-link">Cold Chain</a></li>
           <li><a href="#thawing" class="nav-link">Tips Thawing</a></li>
@@ -2904,10 +2433,10 @@
             Toko Daging Lokal &amp; Suplai Horeca
           </div>
           <h1 class="hero-title">
-            Daging Sapi Pilihan Segar &amp; Beku, <span class="highlight">Berlabel Presisi</span> &amp; Standar RPH
+            Daging Sapi Pilihan Segar &amp; Beku, <span class="highlight">Higienis &amp; Halal</span> Standar RPH
           </h1>
           <p class="hero-desc">
-            Diproduksi langsung oleh <b>PT. Berkah Marsha Sejahtera</b> di Rumah Pemotongan Hewan resmi ber-NKV dan 100% Halal Indonesia. Setiap pack ditimbang akurat dan berlabel barcode unik untuk penelusuran mutu tanpa kompromi.
+            Diproduksi langsung oleh <b>PT. Berkah Marsha Sejahtera</b> di Rumah Pemotongan Hewan resmi ber-NKV dan 100% Halal Indonesia. Setiap pack ditimbang akurat, dikemas vakum higienis, dan dijaga kesegarannya tanpa kompromi.
           </p>
 
           <div class="hero-cta">
@@ -2946,10 +2475,10 @@
           </div>
 
           <div class="hero-floating-card hero-card-left">
-            <div class="floating-card-icon">🏷️</div>
+            <div class="floating-card-icon">✨</div>
             <div>
-              <div class="floating-card-title">Label Barcode Unik</div>
-              <div class="floating-card-desc">CODE128 23-Digit Traceability</div>
+              <div class="floating-card-title">100% Daging Pilihan</div>
+              <div class="floating-card-desc">Segar, Halal &amp; Higienis</div>
             </div>
           </div>
 
@@ -3164,7 +2693,7 @@
             </div>
             <div class="product-meta-row">
               <span class="meta-label">Kemasan:</span>
-              <span class="meta-val">Vakum Higienis &middot; Label Barcode</span>
+              <span class="meta-val">Vakum Kedap Udara &middot; Higienis</span>
             </div>
           </div>
           <a href="https://wa.me/6285891955438?text=Halo%20CMM%20Meat%2C%20saya%20tertarik%20dengan%20produk%20Tenderloin.%20Mohon%20info%20ketersediaan%20stok%20dan%20harga." target="_blank" rel="noopener" class="btn btn-whatsapp wa-direct-btn">
@@ -3197,7 +2726,7 @@
             </div>
             <div class="product-meta-row">
               <span class="meta-label">Kemasan:</span>
-              <span class="meta-val">Vakum Higienis &middot; Label Barcode</span>
+              <span class="meta-val">Vakum Kedap Udara &middot; Higienis</span>
             </div>
           </div>
           <a href="https://wa.me/6285891955438?text=Halo%20CMM%20Meat%2C%20saya%20tertarik%20dengan%20produk%20Striploin.%20Mohon%20info%20ketersediaan%20stok%20dan%20harga." target="_blank" rel="noopener" class="btn btn-whatsapp wa-direct-btn">
@@ -3230,7 +2759,7 @@
             </div>
             <div class="product-meta-row">
               <span class="meta-label">Kemasan:</span>
-              <span class="meta-val">Pack Rapi &middot; Label Barcode</span>
+              <span class="meta-val">Portion Pack &middot; Bersih Higienis</span>
             </div>
           </div>
           <a href="https://wa.me/6285891955438?text=Halo%20CMM%20Meat%2C%20saya%20tertarik%20dengan%20produk%20Striploin%20Steak%20Ready.%20Mohon%20info%20ketersediaan%20stok%20dan%20harga." target="_blank" rel="noopener" class="btn btn-whatsapp wa-direct-btn">
@@ -3263,7 +2792,7 @@
             </div>
             <div class="product-meta-row">
               <span class="meta-label">Kemasan:</span>
-              <span class="meta-val">Vakum Higienis &middot; Label Barcode</span>
+              <span class="meta-val">Vakum Kedap Udara &middot; Higienis</span>
             </div>
           </div>
           <a href="https://wa.me/6285891955438?text=Halo%20CMM%20Meat%2C%20saya%20tertarik%20dengan%20produk%20Creastmeat.%20Mohon%20info%20ketersediaan%20stok%20dan%20harga." target="_blank" rel="noopener" class="btn btn-whatsapp wa-direct-btn">
@@ -3338,182 +2867,7 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 3: LIVE INTERACTIVE LABEL SIMULATION (100x75 mm)
-       ========================================================================== -->
-  <section class="section-label" id="label">
-    <div class="container">
-      <div class="section-header">
-        <div class="badge badge-amber">Transparansi Mutu</div>
-        <h2 class="section-title">Setiap Kemasan Punya Identitas Unik</h2>
-        <p class="section-subtitle">
-          Kami mencetak label resmi 100&times;75 mm langsung saat pengemasan di pabrik. Anda tahu persis siapa produsennya, tanggal potongnya, berat pastinya, dan keabsahan izinnya.
-        </p>
-      </div>
-
-      <div class="label-showcase-grid">
-        <!-- Interactive Label Simulator -->
-        <div class="label-wrapper-container">
-          <div class="label-meta-header">
-            <span>SIMULASI LABEL FISIK 100 &times; 75 MM</span>
-            <span style="color: #059669;">&bull; TERVERIFIKASI RPH</span>
-          </div>
-
-          <!-- Physical Print Label Canvas -->
-          <div class="printed-label" id="livePrintedLabel">
-            <!-- Header -->
-            <div class="lbl-header">
-              <div class="lbl-header-line">
-                <span class="lbl-prod-label">Prod :</span>
-                <span class="lbl-company">PT. BERKAH MARSHA SEJAHTERA</span>
-              </div>
-              <div class="lbl-address">Jl. Raya Tapos RT. 01/03, Kel. Tapos, Kec. Tapos, Kota Depok, Jawa Barat</div>
-            </div>
-
-            <!-- Product Title -->
-            <div class="lbl-product-title" id="lblTitle">STRIPLOIN</div>
-
-            <!-- Info Grid -->
-            <div class="lbl-info-grid">
-              <div class="lbl-main-box">
-                <div class="lbl-pcs" id="lblPcs">6 PCS</div>
-                <div>
-                  <div class="lbl-weight-caption">NET WEIGHT</div>
-                  <div class="lbl-weight-row">
-                    <span class="lbl-weight-val" id="lblWeight">25.15</span>
-                    <span class="lbl-weight-unit">Kg</span>
-                  </div>
-                </div>
-                <div class="lbl-dates">
-                  <div class="lbl-date-row">
-                    <span class="lbl-date-lbl">PACKED</span>
-                    <span id="lblPacked">05-Okt-26</span>
-                  </div>
-                  <div class="lbl-date-row">
-                    <span class="lbl-date-lbl">EXPIRED</span>
-                    <span id="lblExpired">03-Jan-27</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="lbl-halal-box">
-                <img src="halal.svg" alt="Halal Indonesia">
-                <div class="lbl-nkv">NKV RPH-3276041-016</div>
-              </div>
-            </div>
-
-            <!-- Type Bar -->
-            <div class="lbl-type-bar" id="lblTypeBar">
-              <span>KEEP CHILL 0&deg;C</span>
-            </div>
-
-            <!-- Barcode Area -->
-            <div class="lbl-barcode-area">
-              <svg id="labelBarcodeSvg" class="lbl-barcode-svg" viewBox="0 0 320 28" preserveAspectRatio="none"></svg>
-              <div class="lbl-barcode-text" id="lblBarcodeText">12610051002102515060008</div>
-            </div>
-          </div>
-
-          <!-- Label Presets Selector -->
-          <div class="label-presets">
-            <button class="preset-btn active" data-preset="striploin">Striploin (Chill)</button>
-            <button class="preset-btn" data-preset="tenderloin">Tenderloin (Chill)</button>
-            <button class="preset-btn" data-preset="steak">Steak Ready (Frozen)</button>
-            <button class="preset-btn" data-preset="creastmeat">Creastmeat (Frozen)</button>
-          </div>
-        </div>
-
-        <!-- Explanation Column -->
-        <div class="label-explanation">
-          <div class="explain-card">
-            <div class="explain-num">1</div>
-            <div class="explain-content">
-              <h4>Barcode CODE128 (23-Digit Unik)</h4>
-              <p>Setiap pack memiliki nomor seri digital yang memuat tanggal potong, identitas potongan, tipe suhu, berat gramatur, jumlah pcs, hingga urutan produksi harian.</p>
-              <div class="code-breakdown">
-                <span class="code-chip">Prefix</span>
-                <span class="code-chip">Tgl Potong</span>
-                <span class="code-chip">ID Produk</span>
-                <span class="code-chip">Suhu</span>
-                <span class="code-chip">Berat Netto</span>
-                <span class="code-chip">Jumlah Pcs</span>
-                <span class="code-chip">No. Seri</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="explain-card">
-            <div class="explain-num">2</div>
-            <div class="explain-content">
-              <h4>Akurasi Timbangan Digital</h4>
-              <p>Berat bersih (Net Weight) tercatat presisi hingga 2 desimal kilogram. Tidak ada selisih timbangan, memastikan transparansi penuh untuk pembeli retail maupun Horeca.</p>
-            </div>
-          </div>
-
-          <div class="explain-card">
-            <div class="explain-num">3</div>
-            <div class="explain-content">
-              <h4>Jaminan Halal &amp; Sertifikasi NKV</h4>
-              <p>Label memuat logo Halal Indonesia resmi dan nomor registrasi NKV RPH-3276041-016 dari otoritas veteriner yang menjamin daging berasal dari fasilitas higienis.</p>
-            </div>
-          </div>
-
-          <div class="explain-card">
-            <div class="explain-num">4</div>
-            <div class="explain-content">
-              <h4>Instruksi Suhu Simpan Jelas</h4>
-              <p>Keterangan <b>KEEP CHILL 0&deg;C</b> atau <b>KEEP FROZEN -18&deg;C</b> tercetak tegas agar penanganan kualitas daging di dapur Anda tidak keliru.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Traceability Barcode Decoder Tool -->
-      <div class="barcode-decoder-wrapper">
-        <div class="decoder-header">
-          <div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--ink-900);">🔍 Cek Informasi Batch Label (Traceability Tool)</h3>
-            <p style="font-size: 0.88rem; color: var(--ink-500); margin-top: 4px;">Ketik atau pilih contoh nomor barcode 23-digit dari kemasan daging Anda untuk melihat rincian batch pabrik:</p>
-          </div>
-          <span class="badge badge-primary">Sistem Digital Terpadu</span>
-        </div>
-
-        <div class="decoder-input-row">
-          <input type="text" id="decoderInput" class="decoder-input" value="12610051002102515060008" maxlength="23" placeholder="Masukkan 23 digit barcode..." oninput="decodeBarcodeLive()">
-          <button type="button" class="btn btn-outline" style="padding: 10px 18px; font-size: 0.85rem;" onclick="loadRandomBarcodeSample()">Muat Sampel Lain</button>
-        </div>
-
-        <div class="decoder-results-grid">
-          <div class="decoder-item">
-            <span class="decoder-item-label">Tanggal Produksi</span>
-            <span class="decoder-item-val" id="decDate">05 Oktober 2026</span>
-          </div>
-          <div class="decoder-item">
-            <span class="decoder-item-label">Nama Produk</span>
-            <span class="decoder-item-val" id="decProduct">STRIPLOIN</span>
-          </div>
-          <div class="decoder-item">
-            <span class="decoder-item-label">Kondisi Suhu</span>
-            <span class="decoder-item-val" id="decType">CHILL (0&deg;C)</span>
-          </div>
-          <div class="decoder-item">
-            <span class="decoder-item-label">Berat Bersih</span>
-            <span class="decoder-item-val" id="decWeight">25.15 Kg</span>
-          </div>
-          <div class="decoder-item">
-            <span class="decoder-item-label">Jumlah Isi</span>
-            <span class="decoder-item-val" id="decPcs">6 PCS</span>
-          </div>
-          <div class="decoder-item">
-            <span class="decoder-item-label">Nomor Urut Kemas</span>
-            <span class="decoder-item-val" id="decCounter">Label ke-0008</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       SECTION 3.5: KALKULATOR PORSI & BBQ PARTY PLANNER
+       SECTION 4: KALKULATOR PORSI & BBQ PARTY PLANNER
        ========================================================================== -->
   <section class="section-partyplanner" id="party">
     <div class="container">
@@ -4066,7 +3420,7 @@
             </div>
           </a>
           <p class="footer-desc">
-            Penyedia daging sapi lokal berkualitas, segar dan beku. Setiap kemasan berlabel akurat dan bergaransi resmi dari RPH ber-NKV PT. Berkah Marsha Sejahtera.
+            Penyedia daging sapi lokal berkualitas, segar dan beku. Higienis, halal, dan bergaransi mutu resmi dari RPH ber-NKV PT. Berkah Marsha Sejahtera.
           </p>
           <div style="font-size: 0.8rem; color: #a8a29e;">
             NKV: <b>RPH-3276041-016</b> &middot; Halal Indonesia
@@ -4077,7 +3431,8 @@
           <h4>Navigasi</h4>
           <ul class="footer-links">
             <li><a href="#produk">Katalog Daging</a></li>
-            <li><a href="#label">Standar Label 100x75</a></li>
+            <li><a href="#doneness">Panduan Kematangan Steak</a></li>
+            <li><a href="#party">Hitung Porsi BBQ</a></li>
             <li><a href="#suhu">Chill vs Frozen</a></li>
             <li><a href="#legalitas">Sertifikasi &amp; Produsen</a></li>
             <li><a href="#order">Formulir Pesanan</a></li>
@@ -4135,7 +3490,7 @@
   </button>
 
   <!-- ==========================================================================
-       JAVASCRIPT: CODE128 RENDERER, INTERACTIVITY & WA BUILDER
+       JAVASCRIPT: INTERACTIVITY & WA BUILDER
        ========================================================================== -->
   <script>
     // ==========================================
@@ -4159,192 +3514,13 @@
 
       // Jalankan seluruh modul interaktif
       updateOrderPreview();
-      renderLiveBarcode("12610051002102515060008");
-      decodeBarcodeLive();
       calculatePartyMeat();
       checkStoreStatus();
       initBackToTop();
     });
 
     // ==========================================
-    // 2. STANDALONE CODE128 SVG GENERATOR (OFFLINE)
-    // ==========================================
-    const CODE128_PATTERNS = [
-      "212222","222122","222221","121223","121322","131222","122213","122312","132212","221213",
-      "221312","231212","112232","122132","122231","113222","123122","123221","223211","221132",
-      "221231","213212","223112","312131","311222","321122","321221","312212","322112","322211",
-      "212123","212321","232121","111323","131123","131321","112313","132113","132311","211313",
-      "231113","231311","112133","112331","132131","113123","113321","133121","313121","211331",
-      "231131","213113","213311","213131","311123","311321","331121","312113","312311","332111",
-      "314111","221411","431111","111224","111422","121124","121421","141122","141221","112214",
-      "112412","122114","122411","142112","142211","241211","221114","413111","241112","134111",
-      "111242","121142","121241","114212","124112","124211","411212","421112","421211","212141",
-      "214121","412121","111143","111341","131141","114113","114311","411113","411311","113141",
-      "114131","311141","411131","211412","211214","211232","2331112"
-    ];
-
-    function renderLiveBarcode(barcodeStr) {
-      const svg = document.getElementById("labelBarcodeSvg");
-      if (!svg) return;
-
-      let codes = [104]; // Start Code B
-      let checkSum = 104;
-      for (let i = 0; i < barcodeStr.length; i++) {
-        let val = barcodeStr.charCodeAt(i) - 32;
-        codes.push(val);
-        checkSum += val * (i + 1);
-      }
-      codes.push(checkSum % 103);
-      codes.push(106); // Stop Code
-
-      const barPattern = codes.map(c => CODE128_PATTERNS[c]).join("");
-
-      let x = 0;
-      let rects = "";
-      for (let i = 0; i < barPattern.length; i++) {
-        let width = parseInt(barPattern[i], 10);
-        let isBar = (i % 2 === 0);
-        if (isBar) {
-          rects += `<rect x="${x}" y="0" width="${width}" height="28" fill="#000000" />`;
-        }
-        x += width;
-      }
-
-      svg.setAttribute("viewBox", `0 0 ${x} 28`);
-      svg.innerHTML = rects;
-      document.getElementById("lblBarcodeText").textContent = barcodeStr;
-    }
-
-    // ==========================================
-    // 3. INTERACTIVE LABEL SIMULATOR PRESETS
-    // ==========================================
-    const LABEL_PRESETS = {
-      striploin: {
-        title: "STRIPLOIN",
-        weight: "25.15",
-        pcs: "6 PCS",
-        packed: "05-Okt-26",
-        expired: "03-Jan-27",
-        typeText: "KEEP CHILL 0°C",
-        barcode: "12610051002102515060008"
-      },
-      tenderloin: {
-        title: "TENDERLOIN",
-        weight: "12.50",
-        pcs: "5 PCS",
-        packed: "05-Okt-26",
-        expired: "03-Jan-27",
-        typeText: "KEEP CHILL 0°C",
-        barcode: "12610051001101250050001"
-      },
-      steak: {
-        title: "STRIPLOIN STEAK READY",
-        weight: "10.00",
-        pcs: "20 PCS",
-        packed: "05-Okt-26",
-        expired: "05-Okt-27",
-        typeText: "KEEP FROZEN -18°C",
-        barcode: "12610051003201000200003"
-      },
-      creastmeat: {
-        title: "CREASTMEAT",
-        weight: "15.80",
-        pcs: "4 PCS",
-        packed: "05-Okt-26",
-        expired: "05-Okt-27",
-        typeText: "KEEP FROZEN -18°C",
-        barcode: "12610051004201580040004"
-      }
-    };
-
-    document.querySelectorAll(".preset-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const key = btn.dataset.preset;
-        const data = LABEL_PRESETS[key];
-        if (!data) return;
-
-        document.getElementById("lblTitle").textContent = data.title;
-        document.getElementById("lblWeight").textContent = data.weight;
-        document.getElementById("lblPcs").textContent = data.pcs;
-        document.getElementById("lblPacked").textContent = data.packed;
-        document.getElementById("lblExpired").textContent = data.expired;
-        document.getElementById("lblTypeBar").innerHTML = `<span>${data.typeText}</span>`;
-        renderLiveBarcode(data.barcode);
-
-        // Update decoder input juga jika diinginkan
-        const decInput = document.getElementById("decoderInput");
-        if (decInput) {
-          decInput.value = data.barcode;
-          decodeBarcodeLive();
-        }
-      });
-    });
-
-    // ==========================================
-    // 4. TRACEABILITY BARCODE DECODER TOOL
-    // ==========================================
-    const SAMPLE_BARCODES = [
-      "12610051002102515060008",
-      "12610051001101250050001",
-      "12610051003201000200003",
-      "12610051004201580040004"
-    ];
-    let sampleIndex = 0;
-
-    function loadRandomBarcodeSample() {
-      sampleIndex = (sampleIndex + 1) % SAMPLE_BARCODES.length;
-      const code = SAMPLE_BARCODES[sampleIndex];
-      document.getElementById("decoderInput").value = code;
-      decodeBarcodeLive();
-    }
-
-    function decodeBarcodeLive() {
-      const raw = (document.getElementById("decoderInput")?.value || "").trim();
-      if (raw.length !== 23) {
-        document.getElementById("decDate").textContent = "...";
-        document.getElementById("decProduct").textContent = "Barcode harus 23 digit";
-        document.getElementById("decType").textContent = "...";
-        document.getElementById("decWeight").textContent = "...";
-        document.getElementById("decPcs").textContent = "...";
-        document.getElementById("decCounter").textContent = "...";
-        return;
-      }
-
-      const y = "20" + raw.substring(1, 3);
-      const m = raw.substring(3, 5);
-      const d = raw.substring(5, 7);
-      const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-      const monthName = months[parseInt(m, 10) - 1] || m;
-      document.getElementById("decDate").textContent = `${d} ${monthName} ${y}`;
-
-      const prodCode = raw.substring(7, 11);
-      const productNames = {
-        "1001": "TENDERLOIN (Has Dalam)",
-        "1002": "STRIPLOIN (Has Luar)",
-        "1003": "STRIPLOIN STEAK READY",
-        "1004": "CREASTMEAT (Daging Olahan)"
-      };
-      document.getElementById("decProduct").textContent = productNames[prodCode] || "Potongan Sapi Pilihan";
-
-      const typeCode = raw.substring(11, 12);
-      document.getElementById("decType").textContent = typeCode === "1" ? "CHILL (0°C)" : "FROZEN (-18°C)";
-
-      const weightRaw = parseInt(raw.substring(12, 17), 10);
-      const weightKg = (weightRaw / 100).toFixed(2);
-      document.getElementById("decWeight").textContent = `${weightKg} Kg`;
-
-      const pcs = parseInt(raw.substring(17, 19), 10);
-      document.getElementById("decPcs").textContent = pcs > 0 ? `${pcs} PCS` : "Kemasan Curah";
-
-      const counter = parseInt(raw.substring(19, 23), 10);
-      document.getElementById("decCounter").textContent = `Label ke-${counter.toString().padStart(4, "0")}`;
-    }
-
-    // ==========================================
-    // 5. PETA ANATOMI SAPI (BEEF CUT ANATOMY)
+    // 2. PETA ANATOMI SAPI (BEEF CUT ANATOMY)
     // ==========================================
     const BEEF_CUTS_DATA = {
       tenderloin: {
