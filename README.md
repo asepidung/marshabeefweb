@@ -36,9 +36,9 @@ Dibuat sebagai bonus eksklusif yang melengkapi sistem aplikasi cetak label pabri
 ### 1. Mengganti Nomor WhatsApp Pemesanan
 Buka file `index.html` dan cari bagian script di bagian bawah:
 ```javascript
-// Ganti nomor WhatsApp Anda di sini (format 628xxxxxxxxxx tanpa + atau spasi)
-const WA_NUMBER = "6281200000000";
-const WA_DISPLAY = "+62 812-0000-0000";
+// Nomor WhatsApp pemesanan aktif
+const WA_NUMBER = "6285891955438";
+const WA_DISPLAY = "+62 858-9195-5438";
 ```
 Semua tombol pemesanan produk, formulir cepat, dan tombol floating WhatsApp di website akan otomatis terhubung ke nomor tersebut.
 
